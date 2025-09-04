@@ -1,0 +1,113 @@
+```Java
+package basic.c06_loops;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+public class Loops {
+
+    public static void main(String[] args) {
+
+        // Loops
+
+        // - for controlado por contador
+
+        // for (desde, hasta, incremento)
+        for (int index = 0; index < 5; index++) {
+            System.out.println("Hola, Java!");
+        }
+
+        String[] names = {"Brais", "Moure", "mouredev"};
+
+        for (int index = 0; index < names.length; index++) {
+            System.out.println(names[index]);
+        }
+
+        // - for-each
+
+        // for (variable : iterable) -> es como que guardo en una variable cada uno de los elementos del iterable
+        for (String name: names) {
+            System.out.println(name);
+        }
+
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        for (Integer number: numbers) {
+            System.out.println(number);
+        }
+
+        HashMap<String, String> emails = new HashMap<>();
+        emails.put("Brais", "brais@gmail.com");
+        emails.put("Moure", "moure@gmail.com");
+        emails.put("MoureDev", "mouredev@gmail.com");
+
+        // no te deja como antes, porque ahora son pares de valores
+        // for (clave, valor : mapa)
+        // osea en la variable email guardo lo que tiene el mapa "emails"
+        for (Map.Entry<String, String> email: emails.entrySet()) { // entrySet() devuelve un conjunto de pares clave-valor
+            System.out.println(email.getKey());
+            System.out.println(email.getValue());
+        }
+
+        // - while
+
+        int index = 0;
+        while (index < 5) {
+            System.out.println("Hola, Java!");
+            index++;
+        }
+
+        index = 0;
+        while (index < names.length) {
+            System.out.println(names[index]);
+            index++;
+        }
+
+        index = 0;
+        boolean find = false;
+        while (!find) {
+            System.out.println(names[index]);
+            if (names[index].equals("Moure")) {
+                find = true;
+            }
+            index++;
+        }
+
+        // - do-while
+        // se va a ejecutar siempre una vez (la primera) y luego depende de la condicion
+
+        index = 0;
+        do {
+            System.out.println("Hola, Java!");
+            index++;
+        } while (index < 0);
+
+        // Control de bucles
+
+        // - break
+
+        for (String name: names) {
+            if (name.equals("Moure")) {
+                break;
+            }
+            System.out.println(name);
+        }
+
+        // - continue
+
+        // no se imprime el 3, porque es como que fuerza la siguiente ejecucion del bucle
+        for (int i = 0; i < 5; i++) {
+            if (i == 3) {
+                continue;
+            }
+            System.out.println(i);
+        }
+    }
+}
+```

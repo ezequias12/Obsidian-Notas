@@ -1,0 +1,243 @@
+{
+  "main": {
+    "id": "1e011d28e2802ed5",
+    "type": "split",
+    "children": [
+      {
+        "id": "b30f84395ae35d18",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b9467546600f4a4e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Notion/Backend/Notas Clase/Notas Clase 04-09.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Notas Clase 04-09"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e1e6ed738b018563",
+    "type": "split",
+    "children": [
+      {
+        "id": "7b73d2f8751e6cd9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b48d00621e134a27",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "ab3a3aef25abbe57",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "f55fed0aeefa8b42",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 314.5
+  },
+  "right": {
+    "id": "38829a0c02edead1",
+    "type": "split",
+    "children": [
+      {
+        "id": "040d595baeb17db0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "df7e6ca6cda9a2e9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "bea19d73af5ad388",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Notas Dsi/Caso Audiolibros.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Caso Audiolibros"
+            }
+          },
+          {
+            "id": "89e0c5707ae32a1a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7d46db02dc735d51",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Notas Dsi/Caso Audiolibros.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Caso Audiolibros"
+            }
+          },
+          {
+            "id": "a38dc553e6376511",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "message-square",
+              "title": "Copilot"
+            }
+          },
+          {
+            "id": "c641e5d28b02052a",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 504.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false,
+      "obsidian-importer:Open Importer": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "c641e5d28b02052a",
+  "lastOpenFiles": [
+    "Nuevo Text Document.txt",
+    "Notion/Backend/Notas Clase/Notas Clase 02-09/Actividad Proceso Csv.md",
+    "Notion/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
+    "Notion/Backend/Notas Clase/Notas Clase 04-09.md",
+    "Notion/Backend/Notas Clase/Notas Clase 26-08 - Actividad ListaArray.md",
+    "copilot-custom-prompts/Rewrite as tweet thread.md",
+    "copilot-custom-prompts/Rewrite as tweet.md",
+    "copilot-custom-prompts/Remove URLs.md",
+    "copilot-custom-prompts/Generate glossary.md",
+    "copilot-custom-prompts/Generate table of contents.md",
+    "copilot-custom-prompts/Make longer.md",
+    "copilot-custom-prompts/Make shorter.md",
+    "copilot-custom-prompts/Emojify.md",
+    "copilot-custom-prompts/Explain like I am 5.md",
+    "copilot-custom-prompts/Simplify.md",
+    "copilot-custom-prompts/Summarize.md",
+    "copilot-custom-prompts/Translate to Chinese.md",
+    "copilot-custom-prompts/Fix grammar and spelling.md",
+    "copilot-custom-prompts",
+    "Pasted image 20250903235839.png",
+    "Pasted image 20250903235828.png",
+    "Pasted image 20250903235641.png",
+    "Pasted image 20250903235632.png",
+    "Pasted image 20250903235417.png",
+    "Pasted image 20250903235338.png",
+    "Pasted image 20250903235329.png",
+    "Notion/Backend/Notas Clase/Notas Clase 02-09/Ejercicio Proceso Csv.md",
+    "Notion/Backend/Notas Clase/Notas Clase 02-09/Sin título.md",
+    "Notion/Notas DSI/Contenidos PDF 10/Contenidos PDF 10.md",
+    "Notion/Brain.fm.md",
+    "Notion/Sin nombre",
+    "Notion/Dao/Notas Semana 2.md",
+    "Notion/Dao/Dao.md",
+    "Notion/Curso Backend/Flujo de datos y Mapeo.md",
+    "Notion/Curso Backend/Curso Backend.md",
+    "image 32.png",
+    "image 31.png",
+    "image 30.png",
+    "Notion/Backend/Apunte 01 - Introducción/Backend Organización Interna/Esquema Arquitectura Microservicios",
+    "Notion/Curso QA Engineer/Sección 2 - QA Manual/Sección 2.3 - Tecnicas de Testing/Seccion 2.3.2 - Testing No Funcional",
+    "Notion/Curso QA Engineer/Sección 2 - QA Manual/Sección 2.3 - Tecnicas de Testing/Sección 2.3.1 - Testing Funcional",
+    "Notion/Curso Java/Basic/Structures",
+    "Notion/Curso Java/Basic/beginner",
+    "Notion/Backend/Notas Clase/Notas Clase 02-09",
+    "Notion/Backend/Apunte 01 - Introducción/Backend Organización Interna",
+    "Notion/Curso QA Engineer/Sección 3 - QA Automation/Seccion 3.1 - Frontend automation"
+  ]
+}

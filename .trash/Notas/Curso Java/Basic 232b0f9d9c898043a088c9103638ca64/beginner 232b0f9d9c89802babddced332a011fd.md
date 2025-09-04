@@ -1,0 +1,5 @@
+# beginner
+
+[DataTypes](beginner%20232b0f9d9c89802babddced332a011fd/DataTypes%20232b0f9d9c8980a59c51fc59c64378f7.md)
+
+[VariablesAndConstants](beginner%20232b0f9d9c89802babddced332a011fd/VariablesAndConstants%20232b0f9d9c89808fb56ac0f9d16ab15f.md)

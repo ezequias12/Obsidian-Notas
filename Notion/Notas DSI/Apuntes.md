@@ -1,0 +1,107 @@
+# Apuntes
+
+# 📌 Apunte 10 – Diseño Arquitectónico parte 2
+
+### 🔹 Arquitecturas clásicas
+
+- **Spaghetti (Big Ball of Mud):** sin arquitectura definida, alto acoplamiento, difícil de mantener.
+- **Monolítica:** todo el sistema en un único bloque. Fácil de desarrollar, pero difícil de escalar y mantener.
+
+### 🔹 Arquitectura en Capas (Layered)
+
+- Organización en capas: presentación, lógica de negocio, datos, infraestructura.
+- Variantes: partición técnica, partición por dominios.
+- Ventajas: mantenible, modular, segura.
+- Desventajas: performance baja, despliegue complejo, escalado difícil.
+
+### 🔹 Arquitectura Hexagonal (Puertos y Adaptadores)
+
+- Núcleo de negocio aislado, rodeado de puertos (interfaces) y adaptadores (implementaciones externas).
+- Ventajas: bajo acoplamiento, fácil testeo, reemplazo de tecnologías.
+- Desventajas: más compleja de implementar.
+
+### 🔹 Comparación Layered vs Hexagonal
+
+- Layered: centrada en la base de datos.
+- Hexagonal: centrada en la lógica de negocio.
+
+### 🔹 Cliente–Servidor
+
+- **2 capas:** cliente ↔ servidor.
+- **3 capas:** cliente ↔ lógica ↔ datos.
+- **N-tier:** múltiples capas distribuidas.
+- Ventajas: seguridad, centralización, fácil instalación.
+- Desventajas: concurrencia y caídas de servidor.
+
+### 🔹 Patrón Maestro–Esclavo
+
+- Maestro coordina y delega, esclavos ejecutan tareas.
+- Usado en sistemas de tiempo real.
+
+### 🔹 Peer-to-Peer (P2P)
+
+- Nodos son iguales, pueden actuar como cliente o servidor.
+- Puros o híbridos.
+- Usado en compartición de archivos, blockchain.
+
+### 🔹 Estilos Web
+
+- **MVC (Model–View–Controller).**
+- **MVP (Model–View–Presenter).**
+- **MVVM (Model–View–ViewModel).**
+- **Front Controller:** punto único de entrada que gestiona peticiones.
+
+### 🔹 SOA (Service Oriented Architecture)
+
+- Servicios independientes, conectados por un bus o ESB.
+- Basada en contratos y reutilización.
+
+### 🔹 EDA (Event Driven Architecture)
+
+- Arquitectura dirigida por eventos.
+- **Topología Broker:** publish/subscribe, messaging.
+- **Topología Mediator:** process coordinator.
+
+---
+
+# 📌 Apunte 11 – Arquitectura de Microservicios
+
+### 🔹 Microservicios (MSA)
+
+- Sistema compuesto por servicios pequeños, autónomos y poco acoplados.
+- Cada servicio tiene su propia base de datos.
+- Comunicación mediante APIs (REST, mensajería).
+- Adoptada por Netflix, Amazon, Spotify, Uber.
+
+### 🔹 Características
+
+- Composición vía servicios.
+- Organización en torno a capacidades de negocio.
+- Descentralización (datos y gobierno).
+- Diseño para fallas.
+- Automatización de despliegue e infraestructura.
+
+### 🔹 Ventajas
+
+- Escalabilidad, despliegue independiente, agilidad.
+- Aislamiento de fallas.
+- Libertad tecnológica.
+
+### 🔹 Desventajas
+
+- Complejidad de sistemas distribuidos.
+- Testing y monitoreo más difíciles.
+- Performance menor (latencia de red).
+- Requiere equipos maduros.
+
+### 🔹 Patrones de Microservicios
+
+- **De descomposición:** por subdominio (DDD, bounded context).
+- **De datos:** una BD por servicio.
+- **De aplicación:** API Gateway, Backend for Frontend.
+- **De infraestructura:** single service per host, multiple services per host.
+
+### 🔹 Cuándo usar / no usar
+
+- **Usar:** si se necesita escalabilidad independiente, despliegues sin downtime, autonomía de equipos.
+- **No usar:** proyectos nuevos que cambian mucho, equipos chicos, riesgo de caer en un “monolito distribuido”.

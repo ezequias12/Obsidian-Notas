@@ -1,0 +1,5 @@
+# Renovación del hogar
+
+Estado: En curso
+Fecha límite: 26 de abril de 2024
+Tarea secundaria: Definir el alcance de la renovación (cocina, baño, etc.) (Definir%20el%20alcance%20de%20la%20renovaci%C3%B3n%20(cocina,%20ba%C3%B1o,%20223b0f9d9c8981b98e31df36079e8e25.md), Fijar un presupuesto y un plazo para el proyecto (Fijar%20un%20presupuesto%20y%20un%20plazo%20para%20el%20proyecto%20223b0f9d9c8981079042d73b29f55256.md), Investigar y contratar a profesionales o decidirme a hacerlo yo (Investigar%20y%20contratar%20a%20profesionales%20o%20decidirme%20223b0f9d9c8981dfbca1cb62485ee0b9.md), Seleccionar materiales y acabados (colores de pintura, accesorios, etc.) (Seleccionar%20materiales%20y%20acabados%20(colores%20de%20pint%20223b0f9d9c89810e928bd881e14f216c.md), Obtener los permisos necesarios para la construcción (Obtener%20los%20permisos%20necesarios%20para%20la%20construcci%20223b0f9d9c8981b0abfae942dbfb0da6.md), Supervisar las obras de renovación y gestionar los posibles problemas (Supervisar%20las%20obras%20de%20renovaci%C3%B3n%20y%20gestionar%20los%20223b0f9d9c8981d7a5f7e961f669c5ff.md)

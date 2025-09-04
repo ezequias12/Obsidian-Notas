@@ -1,0 +1,12 @@
+
+.obsidian/
+
+
+.trash/
+Notion/.sync/
+Notion/.Trash/
+.DS_Store
+Thumbs.db
+*.tmp
+Notion/
+

@@ -1,0 +1,10 @@
+{
+  "baseFontSizeAction": true,
+  "baseFontSize": 15,
+  "theme": "obsidian",
+  "cssTheme": "Proper Dark",
+  "nativeMenus": false,
+  "textFontFamily": "Inter",
+  "interfaceFontFamily": "Inter",
+  "monospaceFontFamily": "JetBrains Mono"
+}

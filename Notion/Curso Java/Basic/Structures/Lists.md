@@ -1,0 +1,100 @@
+```Java
+package basic.c05_structures;
+
+import java.util.ArrayList;
+
+public class Lists {
+
+    public static void main(String[] args) {
+
+        // Declaración y creación
+        ArrayList<String> names = new ArrayList<>(); // forma clasica robusta
+        // manera alternativa de definir un ArrayList
+        var numbers = new ArrayList<Integer>();
+        // solo se puede hacer con objetos, por eso se usa Integer que contiene todos los primitivos (osea int)
+        // no se puede hacer
+        // var numbers new ArrayList<int>();
+
+        // Tamaño
+
+        System.out.println(names.size()); // imprime 0 porque no tiene elementos
+        // se usa size() en vez de length
+
+        // Inserción
+
+        names.add("Brais"); // la lista es dinámica, no como el array que tenia tamaño fijo
+        names.add("Moure");
+        names.add("MoureDev");
+        System.out.println(names.size());
+
+        // Acceso
+        // no se usa el System.out.println(names[0]); porque no es un array
+        System.out.println(names.getFirst());
+        System.out.println(names.get(1));
+        System.out.println(names.getLast());
+
+        // Modificación
+
+        names.set(2, "mouredev@gmail.com");
+        System.out.println(names.getLast()); // imprime mouredev@gmail.com
+
+        // Eliminación
+
+        names.remove(2);
+        // System.out.println(names.get(2)); // Error index out of bounds exception
+        System.out.println(names.size());
+
+        // Búsqueda
+
+        System.out.println(names.contains("Brais"));
+        System.out.println(names.contains("mouredev@gmail.com"));
+
+        // Limpieza
+
+        names.add("Brais");
+        System.out.println(names); 
+        names.clear();
+        System.out.println(names.size()); // imprime 0
+
+    }
+}
+```
+
+Siempre se recomienda trabajar mas con Listas. osea ArrayLists
+
+## **Diferencias clave entre Arrays y Listas en Java**
+
+|**Array (**`**int[]**` **/** `**String[]**`**)**|**Lista (**`**ArrayList**`**,** `**List**`**)**|
+|---|---|
+|**Tamaño fijo**|**Tamaño dinámico** (se puede agrandar o achicar)|
+|Se usa `**new tipo[tamaño]**` o `{valores}`|Se crea con `new ArrayList<>()`|
+|Solo guarda **datos del mismo tipo**|Solo guarda datos del mismo tipo (pero puede ser genérico con `<String>`, `<Integer>`, etc.)|
+|No se puede cambiar el tamaño después de creado|Podés hacer `add()`, `remove()` y cambia el tamaño|
+|Acceso rápido con `array[i]`|Acceso con `list.get(i)`|
+|Tiene `.length`|Tiene `.size()`|
+|Menos métodos disponibles (básico)|Muchos métodos útiles (`add`, `remove`, `contains`, etc.)|
+|Es más **eficiente** en memoria y velocidad cuando el tamaño es fijo|Es más **flexible** y cómodo para agregar o quitar elementos|
+
+### **¿Cuándo usar cada uno?**
+
+- **Array**:
+    
+    Si sabés el tamaño de antemano y no va a cambiar.
+    
+- **Lista (**`**ArrayList**`**)**:
+    
+    Si necesitás agregar o quitar elementos mientras corre el programa.
+    
+
+### **Ejemplo rápido:**
+
+```Java
+// Array
+int[] numeros = {1, 2, 3};
+
+// Lista
+ArrayList<Integer> lista = new ArrayList<>();
+lista.add(1);
+lista.add(2);
+lista.add(3);
+```

@@ -1,0 +1,5 @@
+# Publicar mi primer libro
+
+Estado: Sin empezar
+Fecha límite: 30 de junio de 2024
+Tarea secundaria: Dedicar sesiones regulares a escribir (Dedicar%20sesiones%20regulares%20a%20escribir%20223b0f9d9c8981fab9d9c89adc905b17.md), Presentar el libro a posibles lectores (Presentar%20el%20libro%20a%20posibles%20lectores%20223b0f9d9c8981fd9baffd77feed964e.md), Investigar opciones de publicación (tradicional, autopublicación) (Investigar%20opciones%20de%20publicaci%C3%B3n%20(tradicional,%20a%20223b0f9d9c89815e86f2c9ef27f792ca.md), Establecer metas de escritura (por ejemplo, capítulos al mes) (Establecer%20metas%20de%20escritura%20(por%20ejemplo,%20cap%C3%ADtu%20223b0f9d9c8981fe98b3c061b1f9ecbd.md), Preparar una presentación o publicar el libro (Preparar%20una%20presentaci%C3%B3n%20o%20publicar%20el%20libro%20223b0f9d9c89811aae0aca48ad53f4ea.md), Definir el género y el esquema de la trama (Definir%20el%20g%C3%A9nero%20y%20el%20esquema%20de%20la%20trama%20223b0f9d9c8981f59697dfe923c996ea.md)

@@ -1,0 +1,84 @@
+Estructura que almacena datos unicos - No admite duplicados
+
+Sirve para almacenar valores únicos y puede o no mantener el orden, según el tipo de Set (`HashSet`, `LinkedHashSet`, `TreeSet`).
+
+HashSet → No guarda de manera ordenada
+
+```Java
+package basic.c05_structures;
+
+import java.util.HashSet;
+
+public class Sets {
+
+    public static void main(String[] args) {
+
+        // Declaración y creación
+        // similar a declaracion de las Lists
+
+        // ArrayList<String> names = new ArrayList<>();
+        // var numbers = new ArrayList<Integer>();
+
+        HashSet<String> names = new HashSet<>();
+        var numbers = new HashSet<Integer>();
+
+        // Tamaño
+
+        System.out.println(names.size());
+
+        // Inserción
+
+        names.add("Brais");
+        names.add("Moure");
+        names.add("MoureDev");
+        names.add("mouredev@gmail.com");
+        System.out.println(names.size()); // imprime 4
+        System.out.println(names); // imprime [MoureDev, Moure, mouredev@gmail.com, Brais]
+        // no mantiene el orden
+
+        // System.out.println(names.getFirst()); NO FUNCIONA -> porque no tiene orden
+
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        // Eliminación
+
+        names.remove("Brais");
+        System.out.println(names.size());
+
+        // Búsqueda
+        // busca sin orden, por eso es mas rapido que el list
+        System.out.println(names.contains("Brais"));
+        System.out.println(names.contains("mouredev@gmail.com"));
+
+        System.out.println(names);
+        names.add("Moure");
+        names.add("Moure");
+        names.add("Moure");
+        System.out.println(names); // no aniade repetidos
+
+        // Conjuntos, puedo agregar a uno todos los elementos de otro
+
+        // names.addAll(numbers); Error. No funciona porque son de distinto tipo
+
+        var countries = new HashSet<String>();
+        countries.add("España");
+        countries.add("México");
+        countries.add("Argentina");
+        countries.add("MoureDev"); // no se agrega porque no se admiten duplicados
+
+        // ahora si se puede agregar
+        names.addAll(countries);
+        System.out.println(names);
+
+        names.removeAll(countries);
+        System.out.println(names);
+
+        // El retainAll() nos permite conservar los elementos comunes, hace una intersección
+        // deja en names solo los elementos que tambiene estan en countries
+        names.retainAll(countries);
+        System.out.println(names);
+    }
+}
+```
