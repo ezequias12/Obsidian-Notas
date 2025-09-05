@@ -1,13 +1,13 @@
-## Parcial
+## Parcial 
 
-Tenemos que saber por ejemplo si nos preguntan que es la arq, saber de donde viene  
+Tenemos que saber por ejemplo si nos preguntan que es la arquitectura de software, saber de donde viene  
 No van a ser preguntas literales de diseño pero si tenemos que tener idea
 
 Saber masomenos que es el diseño arquitectonico (ver cuadro U2)
 
 Contexto general de U2 (Cuadro redondo inicial de datosm proc manuales, formas de E/S, interaccion H-M, procesos) 
 
-
+para poder definir la unidad 3
 
 ### Diseño Arquitectonico
 
@@ -154,3 +154,26 @@ es mas barato el escenario
 - De infraestructura
     - Single service per host
     - Multiple sevice per host
+    
+---
+
+hacer un modelo para los ejemplos
+estilo arquitectónico hexagonal 
+estilo arquitectónico layered
+Arq de microservicios 
+arq monolitica
+proceso de diseño arquitectonico 
+modelo 4+1 de vistas arq 
+rol de arquitecto y roles asociados 
+doc de arquitectura
+patrones de microservicios 
+arq dirigidas x eventos
+arq distribuidas
+arq orientada a servicios va pero no lo dio 
+arq c/s 
+patrones de arq monoliticas
+diferencia entre patrón y estilo no va a preguntar, a lo sumo platónicos vs embebidos. si toca pregunta a qué son los patrones hablar eso, y que hable de estilo está bien
+explique el ejemplo de arquitectura hexagonal, dibujar hexagonal y explicar todo
+no espera que nos sepamos bien de memoria los 5 patrones (broker y ellos)
+dar ejemplo y también tenemos que escribir
+backend x frontend, la diferencia es la independencia en si que se les da
