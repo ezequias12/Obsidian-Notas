@@ -5,9 +5,9 @@ No van a ser preguntas literales de diseño pero si tenemos que tener idea
 
 Saber masomenos que es el diseño arquitectonico (ver cuadro U2)
 
-Contexto general de U2 (Cuadro redondo inicial de datosm proc manuales, formas de E/S, interaccion H-M, procesos)
+Contexto general de U2 (Cuadro redondo inicial de datosm proc manuales, formas de E/S, interaccion H-M, procesos) 
 
-  
+
 
 ### Diseño Arquitectonico
 
