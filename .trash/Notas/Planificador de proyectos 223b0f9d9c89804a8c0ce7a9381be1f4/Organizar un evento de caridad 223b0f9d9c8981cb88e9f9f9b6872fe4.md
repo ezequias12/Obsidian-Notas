@@ -1,5 +1,0 @@
-# Organizar un evento de caridad
-
-Estado: Completado
-Fecha límite: 4 de marzo de 2024
-Tarea secundaria: Decidir el tipo de evento (subasta, carrera, cena de gala) (Decidir%20el%20tipo%20de%20evento%20(subasta,%20carrera,%20cena%20%20223b0f9d9c89819eb6f1d5c466bda108.md), Fijar un objetivo de recaudación de fondos (Fijar%20un%20objetivo%20de%20recaudaci%C3%B3n%20de%20fondos%20223b0f9d9c898189b469d44499e9eb62.md), Fijar el lugar y la fecha del evento (Fijar%20el%20lugar%20y%20la%20fecha%20del%20evento%20223b0f9d9c8981709146ea6adb682bd5.md), Solicitar donaciones o patrocinios (Solicitar%20donaciones%20o%20patrocinios%20223b0f9d9c8981568340f8686d2044d2.md), Promoción del evento en la comunidad y en las redes sociales (Promoci%C3%B3n%20del%20evento%20en%20la%20comunidad%20y%20en%20las%20rede%20223b0f9d9c89811887afd6eca75be19e.md), Organizar el evento y recaudar donaciones (Organizar%20el%20evento%20y%20recaudar%20donaciones%20223b0f9d9c8981b6b070c8940c9901f4.md)

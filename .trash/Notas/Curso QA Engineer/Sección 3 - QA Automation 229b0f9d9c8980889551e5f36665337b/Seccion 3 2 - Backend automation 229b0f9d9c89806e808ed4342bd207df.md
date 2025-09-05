@@ -1,1 +1,0 @@
-# Seccion 3.2 - Backend automation
