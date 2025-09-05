@@ -11,10 +11,14 @@
             "id": "b9467546600f4a4e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "Actividad Programación Funcional en Java"
             }
           }
         ]
@@ -176,7 +180,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c641e5d28b02052a",
+  "active": "b9467546600f4a4e",
   "lastOpenFiles": [
     "Notas/TEST 2 GIT.md",
     "Notas/TEST GIT.md",
