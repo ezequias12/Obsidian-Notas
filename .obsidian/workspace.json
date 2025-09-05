@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notas/Test.md",
+                "file": "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Test"
+              "title": "Actividad Programación Funcional en Java"
             }
           }
         ]
@@ -182,8 +182,8 @@
   },
   "active": "b9467546600f4a4e",
   "lastOpenFiles": [
-    "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
     "Notas/Test.md",
+    "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
     "Untitled.md",
     "Prueba git.md",
     "Notas/TEST 2 GIT.md",
