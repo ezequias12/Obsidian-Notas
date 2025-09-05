@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notion/Backend/Notas Clase/Notas Clase 04-09.md",
+                "file": "Notas/TEST GIT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notas Clase 04-09"
+              "title": "TEST GIT"
             }
           }
         ]
@@ -156,8 +156,8 @@
             "state": {
               "type": "copilot-chat-view",
               "state": {},
-              "icon": "message-square",
-              "title": "Copilot"
+              "icon": "lucide-ghost",
+              "title": "copilot-chat-view"
             }
           },
           {
@@ -191,13 +191,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c641e5d28b02052a",
+  "active": "b9467546600f4a4e",
   "lastOpenFiles": [
+    "Notas/Backend/Notas Clase/Notas Clase 04-09.md",
+    "Notas/TEST GIT.md",
     "Nuevo Text Document.txt",
-    "Notion/Backend/Notas Clase/Notas Clase 02-09/Actividad Proceso Csv.md",
-    "Notion/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
-    "Notion/Backend/Notas Clase/Notas Clase 04-09.md",
-    "Notion/Backend/Notas Clase/Notas Clase 26-08 - Actividad ListaArray.md",
+    "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Proceso Csv.md",
+    "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
+    "Notas/Backend/Notas Clase/Notas Clase 26-08 - Actividad ListaArray.md",
     "copilot-custom-prompts/Rewrite as tweet thread.md",
     "copilot-custom-prompts/Rewrite as tweet.md",
     "copilot-custom-prompts/Remove URLs.md",
@@ -221,23 +222,22 @@
     "Pasted image 20250903235329.png",
     "Notion/Backend/Notas Clase/Notas Clase 02-09/Ejercicio Proceso Csv.md",
     "Notion/Backend/Notas Clase/Notas Clase 02-09/Sin título.md",
-    "Notion/Notas DSI/Contenidos PDF 10/Contenidos PDF 10.md",
-    "Notion/Brain.fm.md",
+    "Notas/Notas DSI/Contenidos PDF 10/Contenidos PDF 10.md",
+    "Notas/Brain.fm.md",
     "Notion/Sin nombre",
-    "Notion/Dao/Notas Semana 2.md",
+    "Notas/Dao/Notas Semana 2.md",
     "Notion/Dao/Dao.md",
-    "Notion/Curso Backend/Flujo de datos y Mapeo.md",
-    "Notion/Curso Backend/Curso Backend.md",
+    "Notas/Curso Backend/Flujo de datos y Mapeo.md",
+    "Notas/Curso Backend/Curso Backend.md",
     "image 32.png",
     "image 31.png",
     "image 30.png",
     "Notion/Backend/Apunte 01 - Introducción/Backend Organización Interna/Esquema Arquitectura Microservicios",
-    "Notion/Curso QA Engineer/Sección 2 - QA Manual/Sección 2.3 - Tecnicas de Testing/Seccion 2.3.2 - Testing No Funcional",
-    "Notion/Curso QA Engineer/Sección 2 - QA Manual/Sección 2.3 - Tecnicas de Testing/Sección 2.3.1 - Testing Funcional",
-    "Notion/Curso Java/Basic/Structures",
-    "Notion/Curso Java/Basic/beginner",
-    "Notion/Backend/Notas Clase/Notas Clase 02-09",
-    "Notion/Backend/Apunte 01 - Introducción/Backend Organización Interna",
-    "Notion/Curso QA Engineer/Sección 3 - QA Automation/Seccion 3.1 - Frontend automation"
+    "Notas/Curso QA Engineer/Sección 2 - QA Manual/Sección 2.3 - Tecnicas de Testing/Seccion 2.3.2 - Testing No Funcional",
+    "Notas/Curso QA Engineer/Sección 2 - QA Manual/Sección 2.3 - Tecnicas de Testing/Sección 2.3.1 - Testing Funcional",
+    "Notas/Curso Java/Basic/Structures",
+    "Notas/Curso Java/Basic/beginner",
+    "Notas/Backend/Notas Clase/Notas Clase 02-09",
+    "Notion/Backend/Apunte 01 - Introducción/Backend Organización Interna"
   ]
 }
