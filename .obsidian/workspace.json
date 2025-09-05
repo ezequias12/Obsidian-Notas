@@ -147,6 +147,16 @@
             }
           },
           {
+            "id": "a38dc553e6376511",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "copilot-chat-view"
+            }
+          },
+          {
             "id": "c641e5d28b02052a",
             "type": "leaf",
             "state": {
@@ -157,11 +167,11 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 504.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -173,14 +183,13 @@
       "command-palette:Abrir paleta de comandos": false,
       "bases:Crear nueva base": false,
       "obsidian-importer:Open Importer": false,
-      "copilot:Open Copilot Chat": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b48d00621e134a27",
+  "active": "b9467546600f4a4e",
   "lastOpenFiles": [
-    "Notas/TEST GIT.md",
     "Notas/TEST 2 GIT.md",
+    "Notas/TEST GIT.md",
     "Notas/Backend/Notas Clase/Notas Clase 04-09.md",
     "Nuevo Text Document.txt",
     "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Proceso Csv.md",
