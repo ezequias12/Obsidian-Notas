@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notas/TEST GIT.md",
+                "file": "Notas/TEST 2 GIT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TEST GIT"
+              "title": "TEST 2 GIT"
             }
           }
         ]
@@ -193,8 +193,9 @@
   },
   "active": "b9467546600f4a4e",
   "lastOpenFiles": [
-    "Notas/Backend/Notas Clase/Notas Clase 04-09.md",
     "Notas/TEST GIT.md",
+    "Notas/TEST 2 GIT.md",
+    "Notas/Backend/Notas Clase/Notas Clase 04-09.md",
     "Nuevo Text Document.txt",
     "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Proceso Csv.md",
     "Notas/Backend/Notas Clase/Notas Clase 02-09/Actividad Programación Funcional en Java.md",
@@ -228,7 +229,6 @@
     "Notas/Dao/Notas Semana 2.md",
     "Notion/Dao/Dao.md",
     "Notas/Curso Backend/Flujo de datos y Mapeo.md",
-    "Notas/Curso Backend/Curso Backend.md",
     "image 32.png",
     "image 31.png",
     "image 30.png",
