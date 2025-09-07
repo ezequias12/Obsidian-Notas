@@ -141,7 +141,7 @@ Queremos que todo el funcionamiento del Menú sea genérico e independiente de c
 
 > Este archivo sirve para probar que nuestro menú y contratos funcionan. Si este main corre, la etapa está cumplida.
 
-```Java
+``` java
 package utnfc.isi.back.menu;
 
 import java.util.List;
