@@ -62,3 +62,56 @@
         
 
 ---
+
+# EDA - Arquitectura Coordinador de Proceso
+
+## 📌 Diferencia fundamental
+
+### 🔹 Antes (EDA con broker, pub/sub, cola de mensajes)
+
+- **El productor publica un evento completo** (ej.: _PedidoCreado_).
+    
+- **Los receptores** lo leen y cada uno decide qué parte usar.
+    
+    - Ej.: Inventario descuenta stock, Facturación emite factura, Notificaciones avisa al cliente.
+        
+- 👉 Cada receptor recibe el **evento completo** y hace lo suyo.
+    
+- 👉 No hay un “director de orquesta”; los flujos emergen solos.
+    
+
+---
+
+### 🔹 Ahora (EDA con Process Coordinator / Mediator)
+
+- **El productor publica el evento** (_PedidoCreado_).
+    
+- El **coordinador de procesos interpreta** ese evento y decide:
+    
+    1. Primero llamar a Inventario.
+        
+    2. Después, si Inventario confirma, llamar a Facturación.
+        
+    3. Finalmente, llamar a Notificaciones.
+        
+- **Cada receptor ya no recibe el evento completo**, sino **la parte o tarea que le corresponde**.
+    
+    - Ej.: Inventario recibe solo “descontar stock”, no toda la info de pedido completa.
+        
+- 👉 El coordinador **desglosa el flujo en pasos** y los va delegando.
+    
+
+---
+
+## 📌 Cambio en el rol del receptor
+
+- Antes: receptores eran más “autónomos”, sacaban lo que les servía de un evento grande.
+    
+- Ahora: receptores son más “especializados” y **esperan órdenes concretas** del coordinador.
+    
+    - Funcionan casi como **servicios atómicos** (ej.: “validar pago”, “enviar mail”).
+        
+- 👉 La lógica del proceso se concentra en el **coordinador**, no en cada receptor.
+    
+
+---
