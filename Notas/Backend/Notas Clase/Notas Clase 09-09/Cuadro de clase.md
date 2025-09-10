@@ -143,10 +143,3 @@ El diagrama muestra distintas formas de usar la DB:
         
 
 ---
-
-👉 Este cuadro es como un **mapa del camino de los datos**:  
-**App (objetos) → JPA/Hibernate (traducción) → JDBC (puente) → DB (persistencia real).**
-
----
-
-¿Querés que te arme un **ejemplo práctico chiquito** con `Cliente` y `Pedido` para ver cómo viaja desde tu código Java hasta PostgreSQL siguiendo este flujo?
