@@ -1,7 +1,0 @@
-  
-
-[[Basic]]
-
-[[Oop]]
-
-[[Exceptions]]

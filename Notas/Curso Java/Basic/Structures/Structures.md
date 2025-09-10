@@ -1,7 +1,0 @@
-[[Arrays]]
-
-[[Lists]]
-
-[[Sets]]
-
-[[Maps]]
