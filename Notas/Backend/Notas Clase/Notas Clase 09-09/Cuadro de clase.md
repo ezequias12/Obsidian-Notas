@@ -143,3 +143,67 @@ El diagrama muestra distintas formas de usar la DB:
         
 
 ---
+
+# Apuntes de los que toma conceptos
+### 🔹 **Apunte 03 – Maven**
+
+- Qué es el `pom.xml`.
+    
+- Cómo se gestionan dependencias como `hibernate-core`, `jakarta.persistence` o el driver de H2/Postgres.
+    
+- Explica cómo Maven descarga y configura todo lo que ves en el diagrama.
+    
+
+---
+
+### 🔹 **Apunte 12 – JDBC**
+
+- Explica qué es JDBC, qué son `Connection`, `Statement`, `ResultSet`.
+    
+- Los distintos tipos de drivers JDBC.
+    
+- Uso de H2 embebido (en memoria o archivo) y H2 servidor.
+    
+- Cómo se conecta la app vía JDBC a motores reales (ej. PostgreSQL).
+    
+- O sea, la parte **JDBC API → DBMS (H2, PostgreSQL)** del cuadro.
+    
+
+---
+
+### 🔹 **Apunte 13 – JPA**
+
+- Qué es JPA y qué resuelve (problema objeto-relacional).
+    
+- Rol de Hibernate como implementación de JPA.
+    
+- Uso de `persistence.xml`, anotaciones como `@Entity`, `@Id`, etc.
+    
+- Cómo se traduce Java ↔ SQL (lo que está en el recuadro rojo del diagrama).
+    
+- O sea, la parte **Mi App (objetos) → ORM (JPA/Hibernate)**.
+    
+
+---
+
+### 🔹 **Apunte 02 – Java**
+
+- Explica la **plataforma Java** y la **JVM**, que es lo que en el cuadro aparece como las cajitas de JVM donde corre H2 o PostgreSQL.
+    
+- Relación entre JDK, JVM y librerías.
+    
+
+---
+
+✅ En resumen:
+
+- **Estructura del proyecto y dependencias** → Apunte 03 (Maven).
+    
+- **Base teórica de la JVM y librerías** → Apunte 02 (Java).
+    
+- **Conexión de bajo nivel a la DB (JDBC)** → Apunte 12.
+    
+- **ORM con JPA/Hibernate** → Apunte 13.
+    
+
+---
