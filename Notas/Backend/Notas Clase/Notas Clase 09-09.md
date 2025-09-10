@@ -8,3 +8,6 @@
 - CSV con filas repetidas. armar una estructura que logre diferenciar las partes repetidas y almacenar todo en una base de datos
 - Para luego devolver consultas
 
+### Repositorio con instructivo para instalar el contenedor
+
+https://labsys.frc.utn.edu.ar/gitlab/backend-app/alumnos/instructivos/contenedor-postgresql
