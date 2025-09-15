@@ -40,3 +40,28 @@
   * A la señal de salida *y(t)* le aplicamos otro sistema (llamado **Sistema Inverso**), el cual arroja como salida la entrada original *x(t)*.
 ![[Pasted image 20250915130636.png]]
 ---
+**Propiedades de los Sistemas**
+
+**3. Causalidad:**
+
+* Un sistema es **causal** si los valores de la salida en un instante de tiempo *t* dependen de los valores de la entrada en el mismo instante de tiempo *t* y/o en tiempos anteriores.
+
+**Ejemplos:**
+
+* **Causal:**
+
+  $$
+  y(t) = x(t) - x(t-1)
+  $$
+
+* **No causal:**
+
+  $$
+  y(t) = x(t) - x(t+1)
+  $$
+
+*Nota:* un sistema no causal depende de valores futuros de la entrada.
+
+Entonces: Si es causal es con memoria
+
+---
