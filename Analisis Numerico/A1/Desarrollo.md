@@ -53,15 +53,56 @@
   $$
   y(t) = x(t) - x(t-1)
   $$
-
+  
+x(t) es la entrada en el presente
+x(t - 1) es la entrada en el pasado
+-> Es causal porque no mira el futuro
 * **No causal:**
 
   $$
   y(t) = x(t) - x(t+1)
   $$
+x(t) es la entrada en el presente
+x(t - 1) es la entrada en el futuro
+-> No es causal porque el sistema tendria que "adivinar" el futuro
 
 *Nota:* un sistema no causal depende de valores futuros de la entrada.
 
 Entonces: Si es causal es con memoria
+
+---
+
+**4. Estabilidad:**
+
+* Un sistema es **estable** si, cuando la entrada es acotada para cualquier instante de tiempo *t*, la salida también lo es para todo *t*.
+
+**Ejemplo de sistema no estable:**
+
+* Entrada:
+
+  $$
+  x(n) = u(n) \quad \text{(escalón unitario en tiempo discreto)}
+  $$
+
+  El valor máximo es 1 (entrada acotada y limitada).
+
+* Salida:
+
+  $$
+  y(n) = \sum_{k=-\infty}^{n} x(k)
+  $$
+
+* Cálculo de algunos valores:
+
+  * $y(0) = 1$
+  * $y(1) = 1 + 1$
+  * $y(2) = 1 + 1 + 1$
+  * $y(3) = 4$
+  * …
+  * $y(1000) = 1001$
+
+**Conclusión:**
+
+* La entrada es acotada, pero la salida crece indefinidamente.
 
 ---
