@@ -39,5 +39,4 @@
 
   * A la señal de salida *y(t)* le aplicamos otro sistema (llamado **Sistema Inverso**), el cual arroja como salida la entrada original *x(t)*.
 ![[Pasted image 20250915130636.png]]
-
 ---
