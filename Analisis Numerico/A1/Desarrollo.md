@@ -83,7 +83,8 @@ Entonces: Si es causal es con memoria
   $$
   x(n) = u(n) \quad \text{(escalón unitario en tiempo discreto)}
   $$
-
+(Siendo) $u(n)$ 
+![[Pasted image 20250915163706.png]]
   El valor máximo es 1 (entrada acotada y limitada).
 
 * Salida:
