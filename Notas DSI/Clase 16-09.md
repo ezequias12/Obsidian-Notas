@@ -270,20 +270,3 @@ classDiagram
 
 # Vista dinámica - Gestión de llamada (estado Iniciada)
 
-```mermaid
-sequenceDiagram
-    participant GestorLlamada
-    participant Llamada
-    participant Iniciada
-
-    GestorLlamada ->> Llamada: finalizarLlamada()
-    Llamada ->> Iniciada: obtenerFechaHoraActual() : DateTime
-    Iniciada -->> Llamada: fechaHoraActual : DateTime
-
-    Llamada ->> Iniciada: finalizarLlamada(fechaHoraActual: DateTime, fechaHoraInicio: DateTime)
-    Iniciada -->> Llamada: (cambia estado / actualiza datos)
-
-    GestorLlamada -->> Llamada: llamada finalizada
-```
-
-
