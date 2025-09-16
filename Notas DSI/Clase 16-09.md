@@ -270,3 +270,25 @@ classDiagram
 
 # Vista dinámica - Gestión de llamada (estado Iniciada)
 
+(aca iria la imagen)
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant L as Llamada
+    participant E as Estado
+    U->>L: nueva llamada()
+    L->>E: setEstado(Iniciada)
+    U->>L: tomarLlamada()
+    L->>E: tomarLlamada()
+    E->>L: setEstado(EnCurso)
+    U->>L: finalizarLlamada()
+    L->>E: finalizarLlamada()
+    E->>L: setEstado(Finalizada)
+    U->>L: confirmarLlamada()
+    L->>E: confirmarLlamada()
+    E->>L: setEstado(EscuchaCorrecta)
+```
+
+
+
