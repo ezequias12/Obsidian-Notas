@@ -1,6 +1,4 @@
-¡Vamos, Eze! Te dejo el **resumen didáctico del Apunte 12 – JDBC**, en criollo, con ejemplos cortitos y lo esencial para que lo copies/pegues y lo apliques al toque.
 
----
 
 # 1) ¿Para qué BD y qué es JDBC?
 
@@ -213,5 +211,3 @@ try (Connection conn = ds.getConnection();
 * **PreparedStatement** para todo lo parametrizable (seguridad + performance). **Batch** para volumen. **Generated Keys** para IDs. &#x20;
 * **Transacciones**: apagá autocommit cuando tengas que garantizar coherencia entre varias operaciones. **Commit/Rollback** rápido.&#x20;
 * **Pool**: en apps concurrentes, es **obligatorio** para no matar la BD ni la latencia. Configuralo con criterio y medí.&#x20;
-
-Si querés, te armo **3 ejercicios cortos** (SELECT parametrizado, INSERT con batch y transacción, y consulta con pool) para practicarlo con H2 primero y después con Postgres.
