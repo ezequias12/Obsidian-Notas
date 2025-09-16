@@ -205,7 +205,7 @@ try (Connection conn = ds.getConnection();
 
 ---
 
-# 8) Qué te llevás (en criollo)
+# 8) En sintesis
 
 * **JDBC** = abrir una conexión, mandar SQL, leer filas, cerrar prolijo.
 * **PreparedStatement** para todo lo parametrizable (seguridad + performance). **Batch** para volumen. **Generated Keys** para IDs. &#x20;
