@@ -1,6 +1,3 @@
-¡Vamos con todo! Te dejo un **resumen completo y didáctico del Apunte 13 (JPA)**, listo para copiar/pegar. La idea es que lo puedas entender “en criollo” y usarlo como machete.
-
----
 
 # 1) ¿Qué es JPA y por qué conviene (o no)?
 
@@ -272,11 +269,3 @@ public record AlbumSummary(Integer id, String title, String artistName) {}
 * **EM & ciclo de vida**: saber **NEW/MANAGED/DETACHED/REMOVED** y qué hace **persist/merge/remove/detach/refresh/flush/find** (y la caché de 1er nivel).
 * **CRUD**: siempre con **transacción** (begin/commit).
 * **JPQL**: alias, rutas (`a.artist.name`), parámetros nombrados, **fetch join** para evitar N+1, **DTO projection** para respuestas livianas, **paginado**.
-
----
-
-¿Querés que te arme **3 ejercicios guiados** (con solución) para:
-
-1. mapear 2 entidades con N→1 y persistir sample data,
-2. escribir 3 JPQL (búsqueda, join, fetch join + paginado),
-3. practicar `merge/detach/refresh` y ver el efecto?
