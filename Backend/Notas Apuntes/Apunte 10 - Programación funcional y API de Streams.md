@@ -15,7 +15,8 @@ interface Operacion {
 }
 
 // 2) Uso: guardo comportamientos en variables
-Operacion suma  = (a, b) -> a + b; // aca tenemos una lambda que implementa calcular de la interfaz funcional Operacion
+Operacion suma  = (a, b) -> a + b; // aca tenemos una lambda que 
+// implementa calcular de la interfaz funcional Operacion
 Operacion resta = (a, b) -> a - b;
 
 // 3) Paso una función como parámetro
@@ -32,7 +33,7 @@ float r2 = aplicar(resta, 10, 5);  // 5.0
 
 ---
 
-# 2) Interfaces funcionales y `@FunctionalInterface`
+## 2) Interfaces funcionales y `@FunctionalInterface`
 
 Java no tiene “funciones sueltas”, así que **representa una función con una interfaz de un solo método** (SAM: _Single Abstract Method_). A eso se le llama **interfaz funcional**. La anotación `@FunctionalInterface` es opcional pero recomendable: el compilador te avisa si, por error, agregaste otro método abstracto.
 
@@ -56,7 +57,7 @@ Operacion div  = (a, b) -> {
 
 ---
 
-# 3) Lambdas y Method References (formas compactas de escribir funciones)
+## 3) Lambdas y Method References (formas compactas de escribir funciones)
 
 **Lambdas**: `(parámetros) -> expresión` o `(parámetros) -> { bloque }`.
 
@@ -90,7 +91,7 @@ List<Integer> longitudes = nombres.stream()
 
 ---
 
-# 4) Interfaces funcionales listas para usar (`java.util.function`)
+## 4) Interfaces funcionales listas para usar (`java.util.function`)
 
 No crees una interfaz cada vez. Usá las estándar:
 
@@ -105,7 +106,7 @@ No crees una interfaz cada vez. Usá las estándar:
 
 ---
 
-# 5) Streams: qué son y cómo crearlos (fuentes)
+## 5) Streams: qué son y cómo crearlos (fuentes)
 
 **Qué es un Stream:** un **pipeline** (conducto) por el que pasan elementos. Vos declarás **qué** transformaciones querés (filtros, mapeos, orden, etc.) y recién se ejecutan cuando pedís un **resultado final** (operación terminal). **No** es una colección; **no guarda** datos.
 
@@ -135,7 +136,7 @@ try (Stream<String> lineas = java.nio.file.Files.lines(java.nio.file.Path.of("da
 
 ---
 
-# 6) Operaciones útiles (intermedias / terminales) + collectors + reduce + streams primitivos
+## 6) Operaciones útiles (intermedias / terminales) + collectors + reduce + streams primitivos
 
 ## 6.1 Intermedias (encadenables, devuelven stream)
 
@@ -175,22 +176,22 @@ boolean hayLargo = datos.stream().anyMatch(s -> s.length() >= 5);
 Se usan con `collect(Collectors.algo(...))`.
 
 - **A listas/sets**:
-    
+
     ```Java
     List<String> lista = datos.stream().toList(); // Java 16+
     // o:
     List<String> lista2 = datos.stream().collect(Collectors.toList());
     Set<String> set = datos.stream().collect(Collectors.toSet());
     ```
-    
+
 - **Unir strings**:
-    
+
     ```Java
     String csv = datos.stream().collect(Collectors.joining(", "));
     ```
-    
+
 - **Agrupar**:
-    
+
     ```Java
     // Map<Longitud, Lista de palabras con esa longitud>
     Map<Integer, List<String>> porLong = datos.stream()
@@ -207,16 +208,16 @@ Se usan con `collect(Collectors.algo(...))`.
             Collectors.mapping(s -> s.charAt(0), Collectors.toSet())
         ));
     ```
-    
+
 - **Particionar (true/false)**:
-    
+
     ```Java
     Map<Boolean, List<String>> porA = datos.stream()
         .collect(Collectors.partitioningBy(s -> s.startsWith("a")));
     ```
-    
+
 - **A Map con manejo de duplicados y tipo de mapa**:
-    
+
     ```Java
     // Clave: palabra, Valor: longitud. Si se repite clave, quedarse con la más larga
     Map<String, Integer> mapa = datos.stream().collect(
@@ -228,16 +229,15 @@ Se usan con `collect(Collectors.algo(...))`.
         )
     );
     ```
-    
+
 - **Estadísticas en una pasada**:
-    
+
     ```Java
     IntSummaryStatistics stats = datos.stream()
         .mapToInt(String::length)
         .summaryStatistics();
     // stats.getCount(), getMin(), getAverage(), getMax(), getSum()
     ```
-    
 
 ## 6.4 `reduce` (aplastar todo a un valor)
 
@@ -273,22 +273,22 @@ IntSummaryStatistics st = List.of(10, 20, 30).stream().mapToInt(x -> x).summaryS
 
 ---
 
-# 7) Buenas prácticas, anti-patrones y tips (lo que evita bugs)
+## 7) Buenas prácticas, anti-patrones y tips (lo que evita bugs)
 
 - **Laziness y un-solo-uso:** nada corre hasta que hacés una **terminal**. Y un stream **no se puede reusar**:
-    
+
     ```Java
     Stream<String> s = datos.stream();
     long c = s.count();
     // s.forEach(...); // ERROR: stream ya consumido
     ```
-    
+
 - **Evitá efectos colaterales** dentro del pipeline (`forEach` que modifica listas externas, acumulaciones manuales). Mejor **recolectá** o usá `reduce/collect`.
 - `**peek**` **es para debug**, no para lógica (puede no ejecutarse si no hay terminal, y confunde).
 - **Orden importa**: `distinct().sorted()` no es igual que `sorted().distinct()` (pensá en costo/semántica).
 - **Archivos:** usá `try-with-resources` para cerrar el stream de líneas; definí charset si hace falta. Hacé el pipeline **adentro** del `try`.
 - `**flatMap**`: aplana listas de listas (muy útil).
-    
+
     ```Java
     List<List<String>> frases = List.of(
         List.of("hola", "mundo"),
@@ -298,7 +298,7 @@ IntSummaryStatistics st = List.of(10, 20, 30).stream().mapToInt(x -> x).summaryS
         .flatMap(List::stream)
         .toList(); // ["hola","mundo","buen","día"]
     ```
-    
+
 - **Cuándo NO usar streams:** si un `for` simple es **más claro** (por ejemplo, lógica con `break/continue` compleja), si **necesitás mutar** estructuras compartidas, o si estás haciendo **micro-loops muy chicos** donde el stream solo agrega ruido.
 
 ---
