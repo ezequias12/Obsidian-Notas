@@ -15,7 +15,7 @@ interface Operacion {
 }
 
 // 2) Uso: guardo comportamientos en variables
-Operacion suma  = (a, b) -> a + b;
+Operacion suma  = (a, b) -> a + b; // aca tenemos una lambda que implementa calcular de la interfaz funcional Operacion
 Operacion resta = (a, b) -> a - b;
 
 // 3) Paso una función como parámetro
@@ -64,7 +64,7 @@ Operacion div  = (a, b) -> {
 - Los **tipos** de parámetros casi siempre se **infieren**.
 
 ```Java
-Operacion suma = (a, b) -> a + b;        // expresión
+Operacion suma = (a, b) -> a + b;   
 Operacion resta = (float a, float b) -> { // con tipos explícitos y bloque
     return a - b;
 };
