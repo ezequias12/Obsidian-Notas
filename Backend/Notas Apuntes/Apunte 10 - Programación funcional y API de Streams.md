@@ -31,11 +31,28 @@ float r2 = aplicar(resta, 10, 5);  // 5.0
 
 **Cuándo conviene:** cuando tenés “qué hacer” variable (filtros, transformaciones, validaciones), o cuando querés **desacoplar** la lógica concreta del “esqueleto” del algoritmo.
 
+**Importante:** Para entender el resto hace falta saber bien que es lambda y para que lo usamos, aunque luego se explica al detalle en la seccion 3.
+
+En Java, una **lambda** es una **forma compacta de escribir una función anónima**, es decir, un pedacito de código que se puede guardar en una variable o pasar como parámetro.
+Siempre implementa **la única operación abstracta** de una **interfaz funcional**.
+
+**Sintaxis básica:**
+
+```java
+(parametros) -> expresión
+(parametros) -> { bloque }
+```
+
 ---
 
 ## 2) Interfaces funcionales y `@FunctionalInterface`
 
 Java no tiene “funciones sueltas”, así que **representa una función con una interfaz de un solo método** (SAM: _Single Abstract Method_). A eso se le llama **interfaz funcional**. La anotación `@FunctionalInterface` es opcional pero recomendable: el compilador te avisa si, por error, agregaste otro método abstracto.
+
+Osea, una interfaz funcional es una interfaz que tiene **exactamente un método abstracto**. Puede tener otros métodos `default` o `static`, pero solo uno sin cuerpo.
+Ese metodo abstracto define la **firma** de la función (qué parámetros recibe y qué devuelve).
+
+En el caso de la calculadora, en vez de hacer una clase para cada operacion de la misma, definimos una interfaz funcional `Operacion` con un solo metodo `calcular`. Luego podemos crear multiples implementaciones de esa interfaz usando lambdas o referencias a métodos.
 
 **Ejemplo clásico de calculadora:**
 
@@ -51,7 +68,12 @@ Operacion div  = (a, b) -> {
     if (b == 0) throw new ArithmeticException("No se puede dividir");
     return a / b;
 };
+// Osea, calcular nos brinda la "forma" de la función (dos floats, devuelve float) y
+// nosotros luego vamos definiendo distintas operaciones que calzan con esa forma.
+// estas operaciones las definimos mediante lambdas o referencias a métodos.
 ```
+* La **interfaz funcional** define la “forma” (`int, int -> int`).
+* Cada **lambda** aporta la lógica concreta (`a+b`, `a-b`).
 
 **Regla mental:** _la interfaz funcional define la “forma” de la función_ (qué parámetros y qué devuelve). Cualquier lambda o referencia a método que “calce” esa forma, sirve.
 
@@ -72,6 +94,8 @@ Operacion resta = (float a, float b) -> { // con tipos explícitos y bloque
 ```
 
 **Method references**: cuando ya existe un método con **misma firma** que la interfaz funcional, podés apuntarlo directo:
+
+
 
 - Estático: `Clase::metodoEstatico`
 - Instancia: `objeto::metodo`
