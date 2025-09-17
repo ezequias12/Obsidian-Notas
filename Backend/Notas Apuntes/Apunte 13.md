@@ -269,3 +269,111 @@ public record AlbumSummary(Integer id, String title, String artistName) {}
 * **EM & ciclo de vida**: saber **NEW/MANAGED/DETACHED/REMOVED** y qué hace **persist/merge/remove/detach/refresh/flush/find** (y la caché de 1er nivel).
 * **CRUD**: siempre con **transacción** (begin/commit).
 * **JPQL**: alias, rutas (`a.artist.name`), parámetros nombrados, **fetch join** para evitar N+1, **DTO projection** para respuestas livianas, **paginado**.
+
+---
+---
+# Importante para entender y conectado con el cuadro de clase
+
+La nota [[Cuadro de clase]] da una pista muy importante: **no necesitas memorizar cómo programar cada línea de JDBC**, sino **entender qué hace y por qué es la base de todo lo que viene después** (como JPA/Hibernate).
+
+Pensemos en JDBC como las "tuberías" que conectan tu aplicación Java con la base de datos. Es el nivel más fundamental.
+
+Aquí te lo explico en partes, siguiendo la lógica de tu apunte:
+
+### 1. ¿Para qué sirve JDBC? (La idea principal)
+
+Imagina que tu programa Java necesita guardar o leer información (usuarios, productos, etc.). Esa información vive en una **base de datos relacional** (como PostgreSQL o H2).
+
+**JDBC (Java Database Connectivity)** es simplemente el **puente** o el "traductor" estándar que permite a tu código Java enviar comandos SQL a la base de datos y recibir las respuestas.
+
+Sin JDBC, tendrías que escribir código específico para cada motor de base de datos, lo cual sería un caos. JDBC te da una API única para hablar con casi cualquier base de datos.
+
+---
+
+### 2. Los 5 Pasos Clave para Usar JDBC (El "Hola Mundo")
+
+Tu apunte lo resume perfectamente. Hacer una consulta con JDBC siempre sigue estos 5 pasos. Piénsalo como hacer una llamada telefónica:
+
+1.  **Cargar el Driver (Marcar el número correcto)**: Antes, tenías que decirle a Java "¡Oye, voy a hablar con una base de datos H2, carga las herramientas para H2!". Hoy, como dice la nota, esto es casi siempre automático si tienes el `.jar` (el driver) en tu proyecto.
+2.  **Abrir la Conexión (Establecer la llamada)**: Usas `DriverManager.getConnection(...)` para conectarte a la base de datos. Le pasas la "dirección" (la URL JDBC), un usuario y una contraseña.
+    ```java
+    // "Hola, quiero conectarme a una base de datos H2 en memoria llamada chinook"
+    Connection conn = DriverManager.getConnection("jdbc:h2:mem:chinook", "sa", "");
+    ```
+3.  **Crear una Sentencia (Preparar tu mensaje)**: Una vez conectado, necesitas un "mensajero" para llevar tu consulta SQL. Ese mensajero es un `Statement` o, mejor aún, un `PreparedStatement`.
+4.  **Ejecutar la Consulta y Leer Resultados (Enviar el mensaje y escuchar la respuesta)**: Le das tu SQL al mensajero y lo envías.
+    *   Si es una consulta (`SELECT`), usas `executeQuery()` y te devuelve un `ResultSet` (una especie de tabla con los resultados) que recorres fila por fila con `rs.next()`.
+    *   Si es una modificación (`INSERT`, `UPDATE`, `DELETE`), usas `executeUpdate()`.
+5.  **Cerrar los Recursos (Colgar la llamada)**: ¡Esto es crucial! Tienes que cerrar la conexión, el statement y el resultset para liberar recursos. La forma moderna y segura de hacerlo es con `try-with-resources`, que los cierra automáticamente por ti.
+
+---
+
+### 3. `Statement` vs. `PreparedStatement` (La diferencia más importante)
+
+Esta es quizás la lección más práctica del apunte.
+
+*   **`Statement`**: Es como escribir tu consulta SQL en un papel y dársela al mensajero. Es simple, pero peligroso si incluyes datos que vienen de un usuario.
+    *   **El Peligro (Inyección SQL)**: Si un usuario en un campo de texto escribe `'; DROP TABLE users; --`, y tú simplemente pegas eso en tu consulta, ¡podría borrarte la tabla!
+
+*   **`PreparedStatement`**: Es como darle al mensajero una plantilla con espacios en blanco (`?`) y luego decirle qué poner en cada espacio.
+    ```java
+    // Plantilla: "SELECT * FROM TRACK WHERE ALBUM_ID = ?"
+    String sql = "SELECT * FROM TRACK WHERE ALBUM_ID = ?";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    // Lleno el espacio en blanco de forma segura:
+    ps.setInt(1, 5); // El primer '?' es el valor 5
+    ```
+    **Ventajas Clave**:
+    1.  **Seguridad**: **Evita la inyección SQL**. Trata los datos del usuario como datos, no como parte del comando SQL.
+    2.  **Eficiencia**: La base de datos puede "pre-compilar" la plantilla y reutilizarla, haciéndola más rápida si la ejecutas muchas veces con diferentes valores.
+
+> **Regla de oro de tu apunte**: ¿Tu consulta necesita parámetros (especialmente si vienen del usuario)? **Usa siempre `PreparedStatement`**.
+
+---
+
+### 4. Transacciones (Hacer varias cosas como si fueran una sola)
+
+Imagina una transferencia bancaria:
+1.  Restar $100 de la cuenta A.
+2.  Sumar $100 a la cuenta B.
+
+¿Qué pasa si el paso 1 funciona pero el sistema se cae antes del paso 2? ¡El dinero desaparece!
+
+Una **transacción** agrupa estas dos operaciones. O se hacen las dos con éxito (`commit()`), o si algo falla, se deshace todo (`rollback()`) y se vuelve al estado inicial.
+
+Por defecto, JDBC está en modo `autocommit=true` (cada operación se confirma al instante). Para una transacción, debes:
+1.  Desactivarlo: `conn.setAutoCommit(false);`
+2.  Hacer tus operaciones (tus `executeUpdate`).
+3.  Si todo fue bien: `conn.commit();`
+4.  Si algo falló: `conn.rollback();`
+
+---
+
+### 5. Pool de Conexiones (No llamar a la base de datos cada vez)
+
+Abrir y cerrar una conexión a la base de datos es un proceso lento y costoso (consume tiempo y recursos).
+
+En una aplicación real con muchos usuarios, no puedes crear una nueva conexión para cada petición. Sería un desastre.
+
+**Solución**: Un **Pool de Conexiones** (como HikariCP).
+*   Es una "piscina" de conexiones ya abiertas y listas para usar.
+*   Cuando tu código necesita una conexión, la "pide prestada" del pool.
+*   Cuando terminas, en lugar de cerrarla, la "devuelves" al pool para que otro la use.
+
+Esto hace que tu aplicación sea muchísimo más rápida y eficiente.
+
+### En Síntesis (Lo que te tienes que llevar del apunte)
+
+*   **JDBC** es la API base de Java para hablar con bases de datos usando SQL.
+*   El flujo es: **Conectar -> Preparar SQL -> Ejecutar -> Leer -> Cerrar**.
+*   **`PreparedStatement` es tu mejor amigo** para la seguridad y el rendimiento.
+*   Las **Transacciones** garantizan que un
+
+#### Sources:
+
+- [[Apunte 12 - JDBC]]
+- [[Apunte 13]]
+- [[Cuadro de clase]]
+- [[Apunte 10 - Programación funcional y API de Streams]]
+- [[Notas Clase 26-08 - Actividad ListaArray]]
+- [[A1.2 - Impulso Unitario]]
