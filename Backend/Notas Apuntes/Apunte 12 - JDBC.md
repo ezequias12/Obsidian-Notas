@@ -1,30 +1,32 @@
-
-
 # 1) ¿Para qué BD y qué es JDBC?
 
-* Las **bases de datos relacionales** te dan persistencia, integridad, concurrencia, seguridad y consultas eficientes; la BD se encarga de esas “cosas difíciles” y vos te concentrás en el código de negocio. En este bloque aprendemos **cómo Java se conecta** a una BD usando **JDBC**, la API de más bajo nivel en Java para hablar con la base (después vendrán JPA/Hibernate/Spring Data, que usan JDBC por debajo). &#x20;
+* Las **bases de datos relacionales** te dan persistencia, integridad, concurrencia, seguridad y consultas eficientes; la BD se encarga de esas “cosas difíciles” y vos te concentrás en el código de negocio. En este bloque aprendemos **cómo Java se conecta** a una BD usando **JDBC**, la API de más bajo nivel en Java para hablar con la base (después vendrán JPA/Hibernate/Spring Data, que usan JDBC por debajo). 
 
 ---
 
 # 2) Motores que usamos (H2 y PostgreSQL) y URLs típicas
 
-* **Elegimos H2** para arrancar (rápido, embebido, cero instalación) y **PostgreSQL** para “modo real” (robusto, multiusuario, transacciones avanzadas). Es un camino natural: empezar simple y subir la vara.&#x20;
+Estos motores los vamos a usar en los labs y proyectos, se implementan mediante JDBC y son open source. Los debemos agregar en la parte de dependencias (Maven/Gradle) o bajar el .jar y ponerlo en el classpath.
+
+* **Elegimos H2** para arrancar (rápido, embebido, cero instalación) y **PostgreSQL** para “modo real” (robusto, multiusuario, transacciones avanzadas). Es un camino natural: empezar simple y subir la vara.
 
 * **H2 (embebido vs. servidor)**
 
-  * *Embebido*: vive dentro de tu JVM; ideal para labs y tests (`jdbc:h2:mem:testdb` o `jdbc:h2:file:./data/testdb`) &#x20;
-  * *Servidor*: corre aparte y vos te conectás por TCP (más parecido a producción). &#x20;
+  * *Embebido*: vive dentro de tu JVM; ideal para labs y tests (`jdbc:h2:mem:testdb` o `jdbc:h2:file:./data/testdb`)
+  * *Servidor*: corre aparte y vos te conectás por TCP (más parecido a producción).
 
-* **PostgreSQL (productivo)**: URL típica `jdbc:postgresql://localhost:5432/miBD`. Ventajas: robustez, roles/schemas, extensiones; desventajas: más complejidad de instalación (suele ir en Docker). &#x20;
+* **PostgreSQL (productivo)**: URL típica `jdbc:postgresql://localhost:5432/miBD`
+ Ventajas: robustez, roles/schemas, extensiones;
+ desventajas: más complejidad de instalación (suele ir en Docker).
 
 * **Patrones de URL** (para que copies y pegues):
 
   * H2 memoria: `jdbc:h2:mem:chinook`
   * H2 archivo: `jdbc:h2:file:./data/chinook.mv.db`
   * H2 TCP: `jdbc:h2:tcp://<host>[:<puerto>]/[ruta/]nombreBD`
-  * PostgreSQL: `jdbc:postgresql://<host>:<puerto>/<bd>`&#x20;
+  * PostgreSQL: `jdbc:postgresql://<host>:<puerto>/<bd>`
 
-> Tip H2: podés agregar `DB_CLOSE_DELAY=-1` para que la base en memoria **no se destruya** al cerrar la última conexión (queda viva mientras la JVM esté viva).&#x20;
+> Tip H2: podés agregar `DB_CLOSE_DELAY=-1` para que la base en memoria **no se destruya** al cerrar la última conexión (queda viva mientras la JVM esté viva).
 
 ---
 
@@ -34,14 +36,12 @@
 
 1. **(Hoy opcional)** Registrar driver
 
-   * Con JDBC 4+ los drivers se cargan solos vía SPI si el .jar está en el classpath. Antes se hacía `Class.forName(...)`.&#x20;
+   * Con JDBC 4+ los drivers se cargan solos vía SPI si el .jar está en el classpath. Antes se hacía `Class.forName(...)`.
    * Ejemplo clásico (solo si hace falta):
 
      ```java
      Class.forName("org.h2.Driver");
      ```
-
-
 
 2. **Conexión** (DriverManager):
 
@@ -49,7 +49,7 @@
    Connection conn = DriverManager.getConnection("jdbc:h2:mem:chinook", "sa", "");
    ```
 
-   También podés pasar usuario/clave en la URL o un `Properties`. (Hay ejemplos equivalentes para MySQL).  &#x20;
+   También podés pasar usuario/clave en la URL o un `Properties`. (Hay ejemplos equivalentes para MySQL).  
 
 3. **Sentencia + Resultados**
 
@@ -65,17 +65,24 @@
      }
      ```
 
-     Métodos: `executeQuery` (SELECT), `executeUpdate` (INSERT/UPDATE/DELETE), `execute` (genérico). El `ResultSet` se recorre con `next()` y se obtienen valores por índice o nombre.  &#x20;
+     Métodos: `executeQuery` (SELECT), `executeUpdate` (INSERT/UPDATE/DELETE), `execute` (genérico). El `ResultSet` se recorre con `next()` y se obtienen valores por índice o nombre.  
 
-4. **Cerrar recursos** con **try-with-resources** (Connection/Statement/ResultSet son `AutoCloseable`). Evitás fugas.&#x20;
+4. **Cerrar recursos** con **try-with-resources** (Connection/Statement/ResultSet son `AutoCloseable`). Evitás fugas.
 
 5. **Errores**
 
-   * JDBC lanza `SQLException`. Si además hacés I/O (por ej. cargar script de init), también `IOException`. Manejalas.&#x20;
+   * JDBC lanza `SQLException`. Si además hacés I/O (por ej. cargar script de init), también `IOException`. Manejalas.
 
 ---
 
 # 4) Statement vs **PreparedStatement** vs **CallableStatement**
+
+Un `statement` es un objeto de java que representa una Instrccion SQL que va a ser enviada a la base de datos.
+Escribis SQL como un String (`"SELECT * FROM tabla WHERE id = 5"`), lo envías y obtenés resultados.
+
+Hay tres tipos principales:
+
+Los Statement son para SQL ad-hoc sin parámetros. Los PreparedStatement son para SQL con parámetros (más seguro y eficiente). Los CallableStatement son para procedimientos almacenados (si el motor lo soporta).
 
 * **PreparedStatement** = SQL **con parámetros** (`?`). Ventajas: te **evita inyección SQL** y tipás los parámetros (`setInt`, `setString`, etc.). Ideal para cualquier entrada de usuario.
 
@@ -88,7 +95,7 @@
   }
   ```
 
-  &#x20;
+  
 
 * **Batch** con `PreparedStatement`: insertar/actualizar **muchas filas** rápido.
 
@@ -104,8 +111,6 @@
   }
   ```
 
-
-
 * **Generated Keys** (IDs autogenerados):
 
   ```java
@@ -115,25 +120,21 @@
   }
   ```
 
-
-
 * **CallableStatement**: para procedimientos/funciones almacenadas (cuando el motor lo permite).
 
   ```java
   try (CallableStatement cs = conn.prepareCall("{ ? = call GET_TOTAL_SALES_BY_CUSTOMER(?) }")) { ... }
   ```
 
-
-
-* **Regla práctica**: ¿Hay parámetros? **PreparedStatement**. ¿Procedimiento/función? **CallableStatement**. ¿DDL o query ad-hoc sin parámetros? **Statement**.&#x20;
+* **Regla práctica**: ¿Hay parámetros? **PreparedStatement**. ¿Procedimiento/función? **CallableStatement**. ¿DDL o query ad-hoc sin parámetros? **Statement**.
 
 ---
 
 # 5) Transacciones y autocommit (lo justo y necesario)
 
-* Para **múltiples operaciones coherentes** (por ej., insertar encabezado + sus detalles), **apagá autocommit**, hacé las operaciones y **cerrá con `commit()`**; si algo falla, **`rollback()`**. Regla simple del día a día.&#x20;
+* Para **múltiples operaciones coherentes** (por ej., insertar encabezado + sus detalles), **apagá autocommit**, hacé las operaciones y **cerrá con `commit()`**; si algo falla, **`rollback()`**. Regla simple del día a día.
 
-> Mini–tip: transacciones **cortas**. Nada de hacer I/O pesado “adentro” de la transacción.&#x20;
+> Mini–tip: transacciones **cortas**. Nada de hacer I/O pesado “adentro” de la transacción.
 
 ---
 
@@ -144,19 +145,19 @@
 * **Siempre** `PreparedStatement` para entradas de usuario (inyección).
 * **try-with-resources** para cerrar todo.
 * **Batch** para cargas masivas.
-* Manejá `NULL` explícitamente (`ps.setNull(idx, Types.INTEGER)`).&#x20;
+* Manejá `NULL` explícitamente (`ps.setNull(idx, Types.INTEGER)`).
 
 **Evitar:**
 
 * Concatenar strings con datos del usuario (`"... WHERE NAME = '" + userInput + "'"`) → inyección.
 * Reutilizar `Statement` para lógica repetitiva con parámetros → usá `PreparedStatement`.
-* Abrir/cerrar conexión **por cada fila** → pensá en **pooling** y batch.&#x20;
+* Abrir/cerrar conexión **por cada fila** → pensá en **pooling** y batch.
 
 ---
 
 # 7) Pool de conexiones (HikariCP) — cuando tu app atiende muchas requests
 
-**El problema**: abrir conexión cuesta (handshake, auth, memoria, sesión). Una conexión única = cuello de botella; una por operación = overhead y latencia. **Solución: un pool** (conjunto de conexiones “listas” que se prestan y devuelven). Usás `DataSource` en lugar de `DriverManager`. Al “cerrar” la conexión, **vuelve al pool** (no se destruye). Beneficios: latencias estables, mejor throughput y control de concurrencia.  &#x20;
+**El problema**: abrir conexión cuesta (handshake, auth, memoria, sesión). Una conexión única = cuello de botella; una por operación = overhead y latencia. **Solución: un pool** (conjunto de conexiones “listas” que se prestan y devuelven). Usás `DataSource` en lugar de `DriverManager`. Al “cerrar” la conexión, **vuelve al pool** (no se destruye). Beneficios: latencias estables, mejor throughput y control de concurrencia.  
 
 **Parámetros clave (conceptos generales):**
 
@@ -165,14 +166,14 @@
 * `connectionTimeout`: cuánto esperar por una conexión libre (si salta, el pool está corto o hay fugas/consultas lentas).
 * `idleTimeout`: cuánta inactividad antes de cerrar conexiones ociosas.
 * `maxLifetime`: vida máxima de una conexión (reciclaje).
-* `keepaliveTime` y `leakDetectionThreshold`: salud y detección de fugas.  &#x20;
+* `keepaliveTime` y `leakDetectionThreshold`: salud y detección de fugas.  
 
 **Buenas prácticas con pool**:
 
 * Siempre `try-with-resources` y cerrar en orden **ResultSet → Statement → Connection**.
 * No compartir `Connection/Statement` entre hilos; nada de `static`.
 * Transacciones cortas; nada de operaciones largas “prestando” una conexión.
-* Monitorear métricas del pool (préstamos, esperas, timeouts). &#x20;
+* Monitorear métricas del pool (préstamos, esperas, timeouts). 
 
 **Ejemplo mini con HikariCP** (patrón de uso):
 
@@ -193,21 +194,21 @@ try (Connection conn = ds.getConnection();
 ((HikariDataSource) ds).close(); // cerrar al final de la app
 ```
 
-&#x20; &#x20;
+ 
 
-**Spring Boot (mapa mental)**: lo mismo de arriba se traduce a propiedades con prefijo `spring.datasource.hikari.*` (`maximum-pool-size`, `minimum-idle`, `connection-timeout`, `idle-timeout`, `max-lifetime`, etc.). &#x20;
+**Spring Boot (mapa mental)**: lo mismo de arriba se traduce a propiedades con prefijo `spring.datasource.hikari.*` (`maximum-pool-size`, `minimum-idle`, `connection-timeout`, `idle-timeout`, `max-lifetime`, etc.). 
 
 **Dimensionar el pool (checklist express)**:
 
 * Medí latencias típicas (p50/p95) y throughput esperado.
 * Usá **Little’s Law** como brújula: concurrencia ≈ throughput × tiempo\_en\_BD.
-* Ajustá tamaños y mirá métricas (si hay `connectionTimeout`, falta pool o hay consultas lentas). &#x20;
+* Ajustá tamaños y mirá métricas (si hay `connectionTimeout`, falta pool o hay consultas lentas). 
 
 ---
 
 # 8) En sintesis
 
 * **JDBC** = abrir una conexión, mandar SQL, leer filas, cerrar prolijo.
-* **PreparedStatement** para todo lo parametrizable (seguridad + performance). **Batch** para volumen. **Generated Keys** para IDs. &#x20;
-* **Transacciones**: apagá autocommit cuando tengas que garantizar coherencia entre varias operaciones. **Commit/Rollback** rápido.&#x20;
-* **Pool**: en apps concurrentes, es **obligatorio** para no matar la BD ni la latencia. Configuralo con criterio y medí.&#x20;
+* **PreparedStatement** para todo lo parametrizable (seguridad + performance). **Batch** para volumen. **Generated Keys** para IDs. 
+* **Transacciones**: apagá autocommit cuando tengas que garantizar coherencia entre varias operaciones. **Commit/Rollback** rápido.
+* **Pool**: en apps concurrentes, es **obligatorio** para no matar la BD ni la latencia. Configuralo con criterio y medí.
