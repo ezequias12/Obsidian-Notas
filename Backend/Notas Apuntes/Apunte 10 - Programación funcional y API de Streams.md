@@ -1,4 +1,3 @@
-
 # 1) Programación funcional en Java (qué es y para qué me sirve)
 
 **Idea base:** además de variables con datos (`int`, `String`, objetos), podés tener **variables que guardan “comportamientos”** (funciones). Esas funciones se pueden **pasar** a otros métodos o **devolver** como resultado. A los métodos que **reciben** o **devuelven** funciones se los llama _de orden superior_.
@@ -15,7 +14,7 @@ interface Operacion {
 }
 
 // 2) Uso: guardo comportamientos en variables
-Operacion suma  = (a, b) -> a + b; // aca tenemos una lambda que 
+Operacion suma  = (a, b) -> a + b; // aca tenemos una lambda que
 // implementa calcular de la interfaz funcional Operacion
 Operacion resta = (a, b) -> a - b;
 
@@ -72,8 +71,9 @@ Operacion div  = (a, b) -> {
 // nosotros luego vamos definiendo distintas operaciones que calzan con esa forma.
 // estas operaciones las definimos mediante lambdas o referencias a métodos.
 ```
-* La **interfaz funcional** define la “forma” (`int, int -> int`).
-* Cada **lambda** aporta la lógica concreta (`a+b`, `a-b`).
+
+- La **interfaz funcional** define la “forma” (`int, int -> int`).
+- Cada **lambda** aporta la lógica concreta (`a+b`, `a-b`).
 
 **Regla mental:** _la interfaz funcional define la “forma” de la función_ (qué parámetros y qué devuelve). Cualquier lambda o referencia a método que “calce” esa forma, sirve.
 
@@ -87,7 +87,9 @@ Operacion div  = (a, b) -> {
 - Los **tipos** de parámetros casi siempre se **infieren**.
 
 ```Java
-Operacion suma = (a, b) -> a + b;   
+Operacion suma = (a, b) -> a + b;  // asi lo escribimos normalmente
+
+// tambien se puede escribir asi, pero es mas verboso y no es comun:
 Operacion resta = (float a, float b) -> { // con tipos explícitos y bloque
     return a - b;
 };
@@ -95,12 +97,19 @@ Operacion resta = (float a, float b) -> { // con tipos explícitos y bloque
 
 **Method references**: cuando ya existe un método con **misma firma** que la interfaz funcional, podés apuntarlo directo:
 
+Se usan para referenciar métodos existentes sin necesidad de escribir una lambda completa. Son más concisas y mejoran la legibilidad cuando el método ya está definido.
+Es una forma más corta de escribir un lambda cuando el lambda solo llama a un método existente.
+Usa la sintaxis `Clase::método` o `objeto::método`.
 
+👉 En criollo: es un atajo para no tener que escribir (x -> algo.hacer(x)).
 
 - Estático: `Clase::metodoEstatico`
 - Instancia: `objeto::metodo`
 - “De tipo” (instancia desconocida): `Tipo::metodo`
 - Constructor: `Tipo::new`
+
+en vez de escribir: `list.forEach(x -> System.out.println(x));`
+podés escribir: `list.forEach(System.out::println);`
 
 ```Java
 // Ejemplos típicos en streams:
@@ -117,6 +126,25 @@ List<Integer> longitudes = nombres.stream()
 
 ## 4) Interfaces funcionales listas para usar (`java.util.function`)
 
+Estas interfaces serian las "interfaces funcionales estándar" que Java provee en el paquete `java.util.function`. Son muy útiles porque cubren la mayoría de los casos comunes y evitan que tengas que definir tus propias interfaces funcionales cada vez que necesitas pasar una función como parámetro.
+
+Cuando escribís un `stream().algo(...)`, **ese `algo` espera una interfaz funcional** como parámetro.
+
+Ejemplo con `.filter(...)`:
+
+```java
+List<String> nombres = List.of("Ana", "Juan", "Pedro");
+
+nombres.stream()
+       .filter(n -> n.length() > 3) // acá va un Predicate<String>
+       .forEach(System.out::println);
+```
+
+* `.filter(...)` espera un `Predicate<T>` (es decir, una función `T -> boolean`).
+* El lambda `n -> n.length() > 3` **es la implementación concreta** de ese `Predicate<String>`.
+* Entonces **vos no llamás directamente a un método de la interfaz**, sino que la API de Streams **usa tu lambda como el método de esa interfaz**.
+
+
 No crees una interfaz cada vez. Usá las estándar:
 
 - **Supplier<T>**: no recibe nada, devuelve un `T`. Ej: `Stream.generate(supplier)`.
@@ -127,6 +155,13 @@ No crees una interfaz cada vez. Usá las estándar:
 - **BinaryOperator<T>**: `(T,T) -> T` (combinar/acumular).
 
 **Elegí por firma:** si necesitás “filtrar”, usá `Predicate<T>`; si necesitás “transformar”, `Function<T,R>`; si vas a “consumir”, `Consumer<T>`; si “producir” sin entrada, `Supplier<T>`.
+
+En criollo
+
+Las interfaces funcionales de `java.util.function` son contratos ya listos que dicen: “quiero una función de tal forma” (ej: recibe T, devuelve boolean).
+Los métodos de Streams (`map`, `filter`, `forEach`, etc.) están escritos para recibir justo esas interfaces.
+
+Cuando vos ponés un lambda o un method reference, lo que hacés es darle a la API de Streams la función que cumple el contrato de la interfaz.
 
 ---
 
@@ -201,67 +236,67 @@ Se usan con `collect(Collectors.algo(...))`.
 
 - **A listas/sets**:
 
-    ```Java
-    List<String> lista = datos.stream().toList(); // Java 16+
-    // o:
-    List<String> lista2 = datos.stream().collect(Collectors.toList());
-    Set<String> set = datos.stream().collect(Collectors.toSet());
-    ```
+  ```Java
+  List<String> lista = datos.stream().toList(); // Java 16+
+  // o:
+  List<String> lista2 = datos.stream().collect(Collectors.toList());
+  Set<String> set = datos.stream().collect(Collectors.toSet());
+  ```
 
 - **Unir strings**:
 
-    ```Java
-    String csv = datos.stream().collect(Collectors.joining(", "));
-    ```
+  ```Java
+  String csv = datos.stream().collect(Collectors.joining(", "));
+  ```
 
 - **Agrupar**:
 
-    ```Java
-    // Map<Longitud, Lista de palabras con esa longitud>
-    Map<Integer, List<String>> porLong = datos.stream()
-        .collect(Collectors.groupingBy(String::length));
-    
-    // Conteo por grupo
-    Map<Integer, Long> conteo = datos.stream()
-        .collect(Collectors.groupingBy(String::length, Collectors.counting()));
-    
-    // Transformación dentro del grupo (downstream)
-    Map<Integer, Set<Character>> letrasIniciales = datos.stream()
-        .collect(Collectors.groupingBy(
-            String::length,
-            Collectors.mapping(s -> s.charAt(0), Collectors.toSet())
-        ));
-    ```
+  ```Java
+  // Map<Longitud, Lista de palabras con esa longitud>
+  Map<Integer, List<String>> porLong = datos.stream()
+      .collect(Collectors.groupingBy(String::length));
+
+  // Conteo por grupo
+  Map<Integer, Long> conteo = datos.stream()
+      .collect(Collectors.groupingBy(String::length, Collectors.counting()));
+
+  // Transformación dentro del grupo (downstream)
+  Map<Integer, Set<Character>> letrasIniciales = datos.stream()
+      .collect(Collectors.groupingBy(
+          String::length,
+          Collectors.mapping(s -> s.charAt(0), Collectors.toSet())
+      ));
+  ```
 
 - **Particionar (true/false)**:
 
-    ```Java
-    Map<Boolean, List<String>> porA = datos.stream()
-        .collect(Collectors.partitioningBy(s -> s.startsWith("a")));
-    ```
+  ```Java
+  Map<Boolean, List<String>> porA = datos.stream()
+      .collect(Collectors.partitioningBy(s -> s.startsWith("a")));
+  ```
 
 - **A Map con manejo de duplicados y tipo de mapa**:
 
-    ```Java
-    // Clave: palabra, Valor: longitud. Si se repite clave, quedarse con la más larga
-    Map<String, Integer> mapa = datos.stream().collect(
-        Collectors.toMap(
-            s -> s,                 // clave
-            String::length,         // valor
-            Integer::max,           // cómo resolver conflicto de clave
-            LinkedHashMap::new      // tipo de mapa (opcional)
-        )
-    );
-    ```
+  ```Java
+  // Clave: palabra, Valor: longitud. Si se repite clave, quedarse con la más larga
+  Map<String, Integer> mapa = datos.stream().collect(
+      Collectors.toMap(
+          s -> s,                 // clave
+          String::length,         // valor
+          Integer::max,           // cómo resolver conflicto de clave
+          LinkedHashMap::new      // tipo de mapa (opcional)
+      )
+  );
+  ```
 
 - **Estadísticas en una pasada**:
 
-    ```Java
-    IntSummaryStatistics stats = datos.stream()
-        .mapToInt(String::length)
-        .summaryStatistics();
-    // stats.getCount(), getMin(), getAverage(), getMax(), getSum()
-    ```
+  ```Java
+  IntSummaryStatistics stats = datos.stream()
+      .mapToInt(String::length)
+      .summaryStatistics();
+  // stats.getCount(), getMin(), getAverage(), getMax(), getSum()
+  ```
 
 ## 6.4 `reduce` (aplastar todo a un valor)
 
@@ -301,11 +336,11 @@ IntSummaryStatistics st = List.of(10, 20, 30).stream().mapToInt(x -> x).summaryS
 
 - **Laziness y un-solo-uso:** nada corre hasta que hacés una **terminal**. Y un stream **no se puede reusar**:
 
-    ```Java
-    Stream<String> s = datos.stream();
-    long c = s.count();
-    // s.forEach(...); // ERROR: stream ya consumido
-    ```
+  ```Java
+  Stream<String> s = datos.stream();
+  long c = s.count();
+  // s.forEach(...); // ERROR: stream ya consumido
+  ```
 
 - **Evitá efectos colaterales** dentro del pipeline (`forEach` que modifica listas externas, acumulaciones manuales). Mejor **recolectá** o usá `reduce/collect`.
 - `**peek**` **es para debug**, no para lógica (puede no ejecutarse si no hay terminal, y confunde).
@@ -313,15 +348,15 @@ IntSummaryStatistics st = List.of(10, 20, 30).stream().mapToInt(x -> x).summaryS
 - **Archivos:** usá `try-with-resources` para cerrar el stream de líneas; definí charset si hace falta. Hacé el pipeline **adentro** del `try`.
 - `**flatMap**`: aplana listas de listas (muy útil).
 
-    ```Java
-    List<List<String>> frases = List.of(
-        List.of("hola", "mundo"),
-        List.of("buen", "día")
-    );
-    List<String> tokens = frases.stream()
-        .flatMap(List::stream)
-        .toList(); // ["hola","mundo","buen","día"]
-    ```
+  ```Java
+  List<List<String>> frases = List.of(
+      List.of("hola", "mundo"),
+      List.of("buen", "día")
+  );
+  List<String> tokens = frases.stream()
+      .flatMap(List::stream)
+      .toList(); // ["hola","mundo","buen","día"]
+  ```
 
 - **Cuándo NO usar streams:** si un `for` simple es **más claro** (por ejemplo, lógica con `break/continue` compleja), si **necesitás mutar** estructuras compartidas, o si estás haciendo **micro-loops muy chicos** donde el stream solo agrega ruido.
 
