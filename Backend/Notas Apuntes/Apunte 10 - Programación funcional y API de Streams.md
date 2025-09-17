@@ -193,6 +193,9 @@ try (Stream<String> lineas = java.nio.file.Files.lines(java.nio.file.Path.of("da
 
 **Imagen mental:** una **cascada**. Cada piedra (operación) transforma el flujo, y al final cae al lago (resultado).
 
+Osea cuando creo un stream puedo definir de que tipo de elementos va a ser el stream (String, Integer, etc) y luego puedo ir encadenando operaciones intermedias (filter, map, etc) que van a transformar ese flujo de datos. 
+Finalmente, cuando aplico una operación terminal (forEach, collect, etc) se ejecuta todo el pipeline y obtengo un resultado.
+
 ---
 
 ## 6) Operaciones útiles (intermedias / terminales) + collectors + reduce + streams primitivos
@@ -208,14 +211,16 @@ try (Stream<String> lineas = java.nio.file.Files.lines(java.nio.file.Path.of("da
 ```Java
 List<String> datos = List.of("ana", "juan", "ana", "pedro");
 List<Integer> res = datos.stream()
-    .filter(s -> s.length() > 3)   // "juan", "pedro"
+    .filter(s -> s.length() > 3)   // "juan", "pedro" 
     .distinct()                    // elimina repetidos
-    .map(String::length)           // 4, 5
-    .sorted()                      // 4, 5
-    .toList();                     // [4, 5]
+    .map(String::length)           // 4, 5 -> transforma cada string a su longitud
+    .sorted()                      // 4, 5 -> ordena natural
+    .toList();                     // [4, 5] -> recolecta en lista
 ```
 
 ## 6.2 Terminales (cierran el stream)
+
+Siempre es necesario cerrar un Stream porque es la operación que desencadena la ejecución del pipeline y produce un resultado final. Hasta que no se llama a una operación terminal, las operaciones intermedias (como `filter`, `map`, etc.) no se ejecutan realmente; solo se definen.
 
 - `forEach(Consumer)`: visitar (efecto lateral).
 - `collect(...)`: recolectar (ver abajo).
@@ -231,6 +236,10 @@ boolean hayLargo = datos.stream().anyMatch(s -> s.length() >= 5);
 ```
 
 ## 6.3 Collectors (la “cocina” del resultado)
+
+Los collectors se usan para **recolectar** los elementos de un stream en una estructura de datos o para realizar operaciones de reducción más complejas.
+Si no los usaramos , tendriamos que implementar manualmente la lógica para acumular los elementos del stream en la estructura deseada, lo cual puede ser tedioso y propenso a errores.
+-> como dijimos, el Stream no es un array que guarda datos, solo los procesa entonces hace falta al final un collector que junte todo en una lista, set, mapa, string, etc.
 
 Se usan con `collect(Collectors.algo(...))`.
 
@@ -300,6 +309,10 @@ Se usan con `collect(Collectors.algo(...))`.
 
 ## 6.4 `reduce` (aplastar todo a un valor)
 
+El `reduce` es una operación terminal que **combina todos los elementos de un stream en un solo valor** mediante una función acumuladora. Es útil para operaciones como suma, producto, concatenación, etc.
+
+
+
 Formas típicas:
 
 ```Java
@@ -362,7 +375,7 @@ IntSummaryStatistics st = List.of(10, 20, 30).stream().mapToInt(x -> x).summaryS
 
 ---
 
-## Mini-bloques prácticos (copiá y probá)
+## Ejemplos para tener en cuenta
 
 **A) Aleatorios y métricas:**
 

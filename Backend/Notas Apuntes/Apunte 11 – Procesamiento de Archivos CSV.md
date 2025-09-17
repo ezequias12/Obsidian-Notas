@@ -2,11 +2,10 @@
 
 Un **CSV** es un archivo de texto con **filas** y **columnas** separadas por un **delimitador** (`,` o `;`). Es súper común para intercambiar datos entre sistemas, pero trae desafíos: **comillas**, **espacios en blanco**, **escapes**, **acentos/charset** (UTF-8) y **orden de columnas**【】. En la cursada lo necesitás porque en el **parcial individual** vas a **procesar un CSV para cargar datos a BD**, así que es tema clave.
 
----
-
 # 2) Lectura básica (sin dependencias): `Scanner` + `split`
 
 La versión “mínima” es leer **línea por línea** y **dividir** por el delimitador. Todo con el **JDK** (sin libs externas)【】.
+Consiste en leer el archivo línea por línea y luego usar el método `split()` de `String` para dividir cada línea por el delimitador.
 
 ```Java
 Path csv = Path.of("personas.csv");
