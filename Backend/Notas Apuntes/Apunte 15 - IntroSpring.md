@@ -4,7 +4,9 @@
 
 ![Pasted image 20250917235017.png](Pasted%20image%2020250917235017.png)
 
-![../../img/Pasted image 20250917235220.png](../../img/Pasted%20image%2020250917235220.png)
+![](../../img/Pasted%20image%2020250917235321.png)
+![](../../img/Pasted%20image%2020250917235324.png)
+![](../../img/Pasted%20image%2020250917235325.png)
 
 ## 1) ¿Qué es Spring y por qué lo usa “todo el mundo” en Java?
 
