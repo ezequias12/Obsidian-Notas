@@ -2,6 +2,8 @@
 
 ![Pasted image 20250917222227.png](Pasted%20image%2020250917222227.png)
 
+
+
 ## 1) ¿Qué es Spring y por qué lo usa “todo el mundo” en Java?
 
 **Spring** es un framework de código abierto que te acelera el desarrollo de apps Java, sobre todo web y APIs REST. No viene en la biblioteca estándar, pero en la práctica es un estándar de facto en la comunidad porque simplifica muchísimo el trabajo del día a día. Además trae un ecosistema enorme: acceso a datos (JDBC/JPA), seguridad, transacciones e integración con otros frameworks (Hibernate, Thymeleaf, JUnit, etc.).
