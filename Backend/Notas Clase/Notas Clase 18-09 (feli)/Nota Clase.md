@@ -53,7 +53,9 @@ Nos va a permitir tambien probar la API de manera interactiva.
 1. Microservicio Multimedia, relacionado con 
     -> Publicaciones
     -> Osea tengo un MS de PublicacionesYMultimedia
+    -> Lo que pasa aca es que las publicaciones en el dominio son Post, por lo que 
 
 2. FestivalesYObras
 
 3. Artistas
+
