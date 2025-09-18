@@ -13,7 +13,7 @@
 https://labsys.frc.utn.edu.ar/gitlab/backend-app/alumnos/instructivos/contenedor-postgresql
 
 ## Cuadro de clase
-![[Pasted image 20250910175651.png]]
+![](../../../img/Pasted%20image%2020250910175651.png)
 
 # Explicacion del cuadro
 

@@ -1,6 +1,7 @@
 # Introducción a Spring Framework
 
-![](../../img/Pasted%20image%2020250917235408.png)
+![Diagrama introductorio de Spring Framework](../../img/Pasted%20image%2020250917235408.png)
+
 ## 1) ¿Qué es Spring y por qué lo usa “todo el mundo” en Java?
 
 **Spring** es un framework de código abierto que te acelera el desarrollo de apps Java, sobre todo web y APIs REST. No viene en la biblioteca estándar, pero en la práctica es un estándar de facto en la comunidad porque simplifica muchísimo el trabajo del día a día. Además trae un ecosistema enorme: acceso a datos (JDBC/JPA), seguridad, transacciones e integración con otros frameworks (Hibernate, Thymeleaf, JUnit, etc.).
@@ -15,10 +16,19 @@ Idea clave en criollo: **menos código repetitivo, más foco en la lógica del n
 
 Spring tiene un **contenedor** que **crea** tus objetos (beans), **los conecta** entre sí y **maneja su ciclo de vida**. El corazón del framework es la **Inversión de Control** + **Inyección de Dependencias (IoC/DI)**: *vos declarás “qué necesitás”, Spring te lo inyecta; no andás haciendo `new` por todos lados*.
 
-* **Beans**: son los objetos “administrados” por Spring; se pueden definir por XML o por anotaciones en POJOs (lo más común hoy).
+**IoC** -> (Inversión de Control) significa que el control de creación y gestión de objetos lo maneja Spring, no vos.
+**DI** -> (Inyección de Dependencias) es el patrón que permite pasar las dependencias (objetos que una clase necesita) desde afuera, en lugar de que la clase las cree por sí misma.
+
+Osea lo que busca Spring es que en una implementacion normal no tengas que estar creando instancias de las clases que necesitas, sino que Spring lo haga por vos y te las inyecte.
+Con estas Instancias nos referimos a los objetos que se crean a partir de una clase.
+
+* **Beans**: son los objetos “administrados” por Spring; se pueden definir por XML o por anotaciones en POJOs (lo más común hoy). 
 * **¿Por qué DI?** Porque lográs **código desacoplado y testeable**: cambiás implementaciones sin tocar la clase que las usa, y en tests podés inyectar mocks.
 
 Ejemplo “anti-DI” (acopla fuerte):
+
+Aca creamos una clase GeneradorPlaylist que tiene dentro un atributo que va a ser del tipo BuscadorCanciones, con el nombre buscadorCanciones.
+
 
 ```java
 public class GeneradorPlaylist {
