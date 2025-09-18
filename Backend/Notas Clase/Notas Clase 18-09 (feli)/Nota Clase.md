@@ -61,6 +61,10 @@ Lo que nos va a ayudar Swagger es a documentar la API, y a tener una idea clara 
 Nos va a permitir definir los recursos, los metodos HTTP, los parametros, las respuestas, etc.
 Nos va a permitir tambien probar la API de manera interactiva.
 
+No va a hacer falta escribir en openApi, Swagger nos va a generar el archivo a partir de las anotaciones en el codigo.
+Lo va a extraer de nuestro codigo.
+
+
 **Docker con PostgreSQL**
 -> El Tp va a tener que ser desplegado en un contenedor Docker
 
