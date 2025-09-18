@@ -171,6 +171,8 @@ Esto te deja **ver** la diferencia haciendo varias llamadas desde el navegador o
 
 ## 9) Arquitectura en capas (cómo ordenar el proyecto)
 
+![](../../img/Pasted%20image%2020250918005250.png)
+
 Para que el proyecto escale y se entienda, se suele separar en capas:
 
 * **Controllers**: reciben requests y devuelven respuestas.
