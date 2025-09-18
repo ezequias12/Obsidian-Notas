@@ -44,11 +44,6 @@ vamos a tener
 
 Lo que propone la actividad es armar la estructura completa 
 
-**Swagger**
-Lo que nos va a ayudar Swagger es a documentar la API, y a tener una idea clara de como va a ser la comunicacion entre los microservicios.
-Nos va a permitir definir los recursos, los metodos HTTP, los parametros, las respuestas, etc.
-Nos va a permitir tambien probar la API de manera interactiva.
-
 **Microservicios propuestos por el profe**
 1. Microservicio Multimedia, relacionado con 
     -> Publicaciones
@@ -58,4 +53,15 @@ Nos va a permitir tambien probar la API de manera interactiva.
 2. FestivalesYObras
 
 3. Artistas
+
+# Segunda idea general
+
+**Swagger**
+Lo que nos va a ayudar Swagger es a documentar la API, y a tener una idea clara de como va a ser la comunicacion entre los microservicios.
+Nos va a permitir definir los recursos, los metodos HTTP, los parametros, las respuestas, etc.
+Nos va a permitir tambien probar la API de manera interactiva.
+
+**Docker con PostgreSQL**
+-> El Tp va a tener que ser desplegado en un contenedor Docker
+
 
