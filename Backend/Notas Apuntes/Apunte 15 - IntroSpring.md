@@ -29,6 +29,13 @@ Ejemplo “anti-DI” (acopla fuerte):
 
 Aca creamos una clase GeneradorPlaylist que tiene dentro un atributo que va a ser del tipo BuscadorCanciones, con el nombre buscadorCanciones.
 
+Osea, **GeneradorPlaylist** tiene un atributo que es de tipo **BuscadorCanciones**. Esto significa que cada objeto **GeneradorPlaylist** tendrá su propio objeto **BuscadorCanciones** asociado.
+
+Luego esta el constructor de la clase, GeneradorPlaylist 
+->dentro del constructor es donde se inicializa el atributo buscadorCanciones.
+new BuscadorCanciones(): Aquí es donde se crea una nueva instancia (un nuevo objeto) de la clase BuscadorCanciones.
+this.buscadorCanciones = ...: Este nuevo objeto BuscadorCanciones se asigna al atributo buscadorCanciones del objeto GeneradorPlaylist que se está creando en ese momento.
+
 
 ```java
 public class GeneradorPlaylist {
@@ -39,9 +46,12 @@ public class GeneradorPlaylist {
 }
 ```
 
-Acá la clase se fabrica su propia dependencia, y eso te ata.
+El problema con la línea **this.buscadorCanciones** = new **BuscadorCanciones()**; es que **GeneradorPlaylist** es directamente responsable de crear su **BuscadorCanciones**. Esto genera un fuerte acoplamiento:
 
-Con DI por **constructor**, declarás lo que necesitás y listo:
+* Si en el futuro quieres usar una versión diferente de **BuscadorCanciones** (por ejemplo, una para pruebas que no acceda a una base de datos real), tendrías que modificar el código de **GeneradorPlaylist**.
+* **GeneradorPlaylist** está "atada" a una implementación específica de **BuscadorCanciones**.
+
+La Inyección de Dependencias (DI), que Spring promueve, resuelve esto. En lugar de que **GeneradorPlaylist** cree su **BuscadorCanciones**, simplemente declara que lo necesita (como en el ejemplo del constructor con DI):
 
 ```java
 public class GeneradorPlaylist {
@@ -52,7 +62,7 @@ public class GeneradorPlaylist {
 }
 ```
 
-Spring se encarga de inyectar un `BuscadorCanciones` adecuado (por configuración o anotaciones).
+En este segundo ejemplo, **GeneradorPlaylist** ya no se preocupa por cómo se crea **BuscadorCanciones**, solo sabe que lo necesita y que alguien (Spring) se lo proporcionará. Esto hace que el código sea más flexible, modular y fácil de probar.
 
 ---
 
@@ -103,7 +113,7 @@ public class HolaMundoController {
 }
 ```
 
-Esto lo corrés y probás en `http://localhost:8080/saludo`【 】.
+Esto lo corrés y probás en `http://localhost:8080/saludo`.
 
 ---
 
