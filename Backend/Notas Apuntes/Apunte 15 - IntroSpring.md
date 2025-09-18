@@ -1,6 +1,6 @@
 # Introducción a Spring Framework
 
-![[Pasted image 20250917222227.png]]
+![Pasted image 20250917222227.png](Pasted%20image%2020250917222227.png)
 
 ## 1) ¿Qué es Spring y por qué lo usa “todo el mundo” en Java?
 
